@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "ISISCapitalist": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ISISCapitalist"
+    }
+  },
+  "defaultProject": "ISISCapitalist",
+  "cli": {
+    "analytics": "75c98044-eb65-44cd-9eb4-02a99de8ced4"
+  }
 }

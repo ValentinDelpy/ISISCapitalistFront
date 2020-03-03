@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/ssylvest/Desktop/demo/demo/../../schema7.xml" uri="src/main/resources/jaxb/xmlWorld/schema7.xml"/>
+    <system systemId="file:/C:/Users/ssylvest/Desktop/demo/demo/../../WorldSchema.xml" uri="src/main/resources/jaxb/WorldSchema/WorldSchema.xml"/>
+    <system systemId="file:/C:/Users/ssylvest/Desktop/demo/demo/../../SchemaWorld.xml" uri="src/main/resources/jaxb/WorldSchema/SchemaWorld.xml.xsd"/>
+</catalog>

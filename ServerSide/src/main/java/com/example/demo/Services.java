@@ -15,10 +15,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-/**
- *
- * @author ssylvest
- */
 public class Services {
 
     World readWorldFromXml() throws JAXBException {

@@ -17,8 +17,7 @@ public class DemoApplication {
                 w = service.readWorldFromXml();
                 World save = new World();
                 service.saveWorldToXml(save);
-                        
-                
+
                 System.out.println(w.getName());
 
 	}

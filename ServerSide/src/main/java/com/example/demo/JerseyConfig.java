@@ -8,12 +8,13 @@ package com.example.demo;
 import javax.ws.rs.ApplicationPath;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Soul
  */
-@Configuration
+@Component
 @ApplicationPath("/adventureisis")
 public class JerseyConfig extends ResourceConfig {
 

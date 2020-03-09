@@ -15,12 +15,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 /**
  *
  * @author Soul
  */
-@Component
+@Controller
 @Path("/api")
 public class Webservice {
 
@@ -30,12 +31,13 @@ public class Webservice {
         this.services = new Services();
     }
 
-@GET
-@Path("world")
-@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-public Response getXml(@Context HttpServletRequest request) {
- String username = request.getHeader("X-user");
- return …;
- }
+    @GET
+    @Path("world")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getXml(@Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        return Response.ok(services.readWorldFromXml(username)).build();
+    }
+    
 
 }

@@ -4,7 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
+import { RestserviceService } from './restservice.service';
 
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,7 @@ import { ProductComponent } from './product/product.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [RestserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

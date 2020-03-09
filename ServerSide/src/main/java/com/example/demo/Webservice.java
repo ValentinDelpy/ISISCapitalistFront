@@ -31,11 +31,13 @@ public class Webservice {
         this.services = new Services();
     }
 
-@GET
-@Path("world")
-@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
- public Response getWorld() throws JAXBException {
- return Response.ok(services.readWorldFromXml()).build();
- }
+    @GET
+    @Path("world")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getXml(@Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        return Response.ok(services.readWorldFromXml(username)).build();
+    }
+    
 
 }

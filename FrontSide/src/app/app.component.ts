@@ -11,9 +11,9 @@ import { World, Product, Pallier } from './world';
 export class AppComponent {
   title = 'ISISCapitalist';
   world: World = new World();
-  server: Promise<World>;
+  server: string;
   constructor(private service: RestserviceService) {
-    this.server = service.getWorld();
+    this.server = service.getServer();
     service.getWorld().then(
 
     world => {

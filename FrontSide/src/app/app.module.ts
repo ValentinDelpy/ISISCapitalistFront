@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
+import {HttpClientModule} from '@angular/common/http';
+
 import { RestserviceService } from './restservice.service';
 
 // @ts-ignore
@@ -13,6 +15,7 @@ import { RestserviceService } from './restservice.service';
     ProductComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule
   ],

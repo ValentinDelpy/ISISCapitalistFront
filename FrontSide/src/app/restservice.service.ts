@@ -7,7 +7,7 @@ import { World, Pallier, Product} from './world';
 })
 export class RestserviceService {
   constructor(private http: HttpClient) {}
-  server = 'http://localhost:8080/adventureISIS/'
+  server = 'http://localhost:8080/';
   user = '';
 
   private handleError(error: any): Promise<any> {
@@ -15,7 +15,11 @@ export class RestserviceService {
     return Promise.reject(error.message || error);
   }
   getWorld(): Promise<World> {
-    return this.http.get(this.server + 'webresources/generic/world')
+    return this.http.get(this.server + 'adventureisis/api/world')
       .toPromise().catch(this.handleError);
+  }
+
+  getServer(): string{
+    return this.server;
   }
 }

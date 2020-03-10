@@ -1,1 +1,8 @@
-<p>product works!</p>
+<div class="card" style="width: 18rem;">
+  <img [attr.src]="'http://localhost:8080/'+product.logo" [attr.width]=100 [attr.height]=100 class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">Coût : {{product.cout}}</p>
+    <a href="#" class="btn btn-primary">Acheter</a>
+  </div>
+</div>

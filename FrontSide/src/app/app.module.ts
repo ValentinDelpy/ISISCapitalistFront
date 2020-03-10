@@ -7,12 +7,14 @@ import { ProductComponent } from './product/product.component';
 import {HttpClientModule} from '@angular/common/http';
 
 import { RestserviceService } from './restservice.service';
+import { BigvaluePipe } from './bigvalue.pipe';
 
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    BigvaluePipe
   ],
   imports: [
     HttpClientModule,

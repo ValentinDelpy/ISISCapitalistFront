@@ -12,8 +12,17 @@
     <link rel="stylesheet" href="">
   </head>
   <body>
-  <img [attr.src]="server+world.logo" [attr.width]=100 [attr.height]=100/>
-  <span id="worldname">{{world.name}}</span>
+  <img [attr.src]="server+world.logo" [attr.width]=300 [attr.height]=300/>
+  <span id="worldname">{{world.name}}</span><br/>
+  <app-product [prod]="world.products.product[0]"
+               class="product col-md-6"></app-product>
+  <span [innerHTML]="world.money | bigvalue"> </span>
+<ul>
+    <li *ngFor="let product of world.products">
+      <app-product [prod]=product
+                   class="product col-md-6"></app-product>
+    </li>
+</ul>
     <script src="" async defer></script>
   </body>
 </html>

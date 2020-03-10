@@ -33,7 +33,6 @@ public class Services {
     }
 
     void saveWorldToXml(World world, String pseudo) throws FileNotFoundException, JAXBException {
-
         OutputStream output = new FileOutputStream(pseudo + "world.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(World.class);
         Marshaller m = jaxbContext.createMarshaller();

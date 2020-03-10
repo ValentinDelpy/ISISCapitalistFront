@@ -2,7 +2,7 @@
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>Les petits dinosaures</name>
-    <logo>icones/logoclub.png</logo>
+    <logo>icones/petit_dinosaure.jpg</logo>
     <money>0</money>
     <score>0</score>
     <totalangels>0</totalangels>

@@ -5,9 +5,16 @@
  */
 package com.example.demo;
 
+import com.google.gson.Gson;
+import generated.PallierType;
+import generated.ProductType;
 import generated.World;
+import java.io.FileNotFoundException;
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import static javax.ws.rs.HttpMethod.PUT;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
@@ -39,5 +46,19 @@ public class Webservice {
         return Response.ok(services.readWorldFromXml(username)).build();
     }
     
-
+    @PUT
+    @Path("product")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response editProduct(String data) throws FileNotFoundException, JAXBException{
+        ProductType product = new Gson().fromJson(data, ProductType.class);
+        return Response.ok(services.updateProduct(data, product)).build();
+    }
+    
+    @PUT
+    @Path("product")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response editManager(String data) throws FileNotFoundException, JAXBException{
+        PallierType manager = new Gson().fromJson(data, PallierType.class);
+        return Response.ok(services.updateManager(data, manager)).build();
+    }
 }

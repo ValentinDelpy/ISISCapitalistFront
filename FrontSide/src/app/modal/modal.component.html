@@ -1,0 +1,15 @@
+<app-modal #managersModal>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Managers make you feel better !</h4>
+  </div>
+  <div class="app-modal-body">
+    <div *ngFor="let manager of world.managers.pallier">
+      <img [attr.src]="'http://localhost:8080/'+manager.logo" [attr.width]=100 [attr.height]=100 class="card-img-top" alt="...">
+
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default"
+            (click)="managersModal.hide()">Close</button>
+  </div>
+</app-modal>

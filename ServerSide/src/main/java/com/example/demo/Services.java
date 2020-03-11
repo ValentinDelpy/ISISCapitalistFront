@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
@@ -45,10 +46,7 @@ public class Services {
     }
 
     public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, JAXBException {
-        // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
-        // trouver dans ce monde, le produit équivalent à celui passé
-        // en paramètre
         ProductType product = findProductById(world, newproduct.getId());
         if (product == null) {
             return false;
@@ -61,10 +59,12 @@ public class Services {
         if (qtchange > 0) {
             // soustraire de l'argent du joueur le cout de la quantité
             // achetée et mettre à jour la quantité de product
-
+            double cout = (product.getCout() * (1 - Math.pow(product.getCroissance(), newproduct.getQuantite()))) / (1 - product.getCroissance());
+            world.setMoney(world.getMoney() - cout);
+            product.setQuantite(product.getQuantite() + newproduct.getQuantite());
         } else {
-            // initialiser product.timeleft à product.vitesse
-            // pour lancer la production
+            product.setTimeleft(product.getVitesse());
+            product.setQuantite(newproduct.getQuantite());
         }
         // sauvegarder les changements du monde
         this.saveWorldToXml(world, username);
@@ -82,38 +82,34 @@ public class Services {
         if (manager == null) {
             return false;
         }
-
-        // débloquer ce manager
-        // trouver le produit correspondant au manager
         ProductType product = findProductById(world, manager.getIdcible());
         if (product == null) {
             return false;
         }
-        // débloquer le manager de ce produit
-
-        // soustraire de l'argent du joueur le cout du manager
-        // sauvegarder les changements au monde
+        world.setMoney(world.getMoney()-manager.getSeuil());
+        product.setManagerUnlocked(true);
+        manager.setUnlocked(true);
         this.saveWorldToXml(world, username);
         return true;
     }
 
     private ProductType findProductById(World world, int id) {
         ProductType pt = null;
-            for(ProductType p : world.getProducts().getProduct()){
-                if(p.getId()==id){
-                    pt = p;
-                }
+        for (ProductType p : world.getProducts().getProduct()) {
+            if (p.getId() == id) {
+                pt = p;
             }
+        }
         return pt;
     }
 
     private PallierType findManagerByName(World world, String name) {
-            PallierType pt = null;
-            for(PallierType p : world.getUpgrades().getPallier()){
-                if(p.getName().equals(name)){
-                    pt = p;
-                }
+        PallierType pt = null;
+        for (PallierType p : world.getManagers().getPallier()) {
+            if (p.getName().equals(name)) {
+                pt = p;
             }
+        }
         return pt;
     }
 

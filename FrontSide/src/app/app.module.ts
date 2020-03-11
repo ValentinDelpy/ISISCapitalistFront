@@ -8,13 +8,15 @@ import {HttpClientModule} from '@angular/common/http';
 
 import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
+import { ModalComponent } from './modal/modal.component';
 
 // @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    BigvaluePipe
+    BigvaluePipe,
+    ModalComponent
   ],
   imports: [
     HttpClientModule,

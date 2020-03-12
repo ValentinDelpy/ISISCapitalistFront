@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../world';
+import {ThemePalette} from '@angular/material/core';
+import {ProgressBarMode} from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-product',
@@ -9,6 +11,10 @@ import {Product} from '../world';
 
 export class ProductComponent implements OnInit {
   product: Product;
+  color: ThemePalette = 'primary';
+  mode: ProgressBarMode = 'determinate';
+  value = 50;
+  bufferValue = 75;
 
   constructor() { }
 

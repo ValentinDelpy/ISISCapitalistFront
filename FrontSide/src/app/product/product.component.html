@@ -1,18 +1,18 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-<div class="card" style="width: 18rem;">
-  
-  
-    <div class="row no-gutters mt-5">
-      <div class="col-md-4">
-        <img [attr.src]="'http://localhost:8080/'+product.logo" class="card-img border rounded-circle" alt="...">
+<link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+<div class="col-sm-4">
+  <div class="card text-center">
+    <div class="image">
+      <img [attr.src]="'http://localhost:8080/'+product.logo" alt="...">
+    </div>
+    <div class="card-inner">
+      <div class="header">
+        <h2>{{product.name}}</h2>
+        <h3> Coût : {{product.cout}}</h3>
       </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{product.name}}</h5>
-          <p class="card-text"> Coût : {{product.cout}}</p>
-          <p class="card-text"><small class="text-muted"><a href="#" class="btn btn-primary">Acheter</a></small></p>
-        </div>
+      <div class="content">
+        <p class="card-text"><small class="text-muted"><a href="#" class="btn">Acheter</a></small></p>
       </div>
     </div>
+  </div>
 </div>

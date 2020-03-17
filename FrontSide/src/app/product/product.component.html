@@ -3,10 +3,11 @@
 <div class="col-sm-4">
   <div class="card text-center">
     <div class="image">
-      <img [attr.src]="'http://localhost:8080/'+product.logo" alt="...">
+      <img [attr.src]="'http://localhost:8080/'+product.logo" (click)="production()" alt="...">
     </div>
     <div class="card-inner">
       <div class="header">
+        <div class="progress" #bar> </div>
         <h2>{{product.name}}</h2>
         <h3> Coût : {{product.cout}}</h3>
       </div>

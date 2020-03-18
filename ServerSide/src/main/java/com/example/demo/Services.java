@@ -7,6 +7,8 @@ package com.example.demo;
 
 import generated.PallierType;
 import generated.ProductType;
+import static generated.TyperatioType.GAIN;
+import static generated.TyperatioType.VITESSE;
 import generated.World;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -41,7 +43,29 @@ public class Services {
     }
 
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public World getWorld(String pseudo) throws JAXBException {
+    public World getWorld(String pseudo) throws JAXBException, FileNotFoundException {
+        World w = this.readWorldFromXml(pseudo);
+        for (ProductType pt : w.getProducts().getProduct()) {
+            if (!pt.isManagerUnlocked()) {
+                if (pt.getTimeleft() != 0) {
+                    if (pt.getTimeleft() < (System.currentTimeMillis() - w.getLastupdate())) {
+                          w.setScore(w.getScore()+pt.getRevenu());
+                    }
+                    else{
+                        pt.setTimeleft(pt.getTimeleft() - (System.currentTimeMillis() - w.getLastupdate()));
+                    }
+                }
+            } else {
+                long time = System.currentTimeMillis() - w.getLastupdate();
+                long nb_prod = (time / pt.getVitesse());
+                long time_left = (time % pt.getVitesse());
+                w.setScore(w.getScore() + pt.getRevenu()*nb_prod);
+                pt.setTimeleft(time_left);
+            }
+        }
+
+        w.setLastupdate(System.currentTimeMillis());
+        this.saveWorldToXml(w, pseudo);
         return this.readWorldFromXml(pseudo);
     }
 
@@ -66,6 +90,17 @@ public class Services {
             product.setTimeleft(product.getVitesse());
             product.setQuantite(newproduct.getQuantite());
         }
+        for(PallierType pl : product.getPalliers().getPallier()){
+            if(pl.getSeuil()<=product.getQuantite() && !pl.isUnlocked()){
+                pl.setUnlocked(true);
+                if(pl.getTyperatio()==VITESSE){
+                    product.setVitesse((int) (product.getVitesse()*pl.getRatio()));
+                }
+                else if(pl.getTyperatio()==GAIN){
+                    product.setRevenu(product.getRevenu()*pl.getRatio());
+                }
+            }
+        }
         // sauvegarder les changements du monde
         this.saveWorldToXml(world, username);
         return true;
@@ -86,7 +121,7 @@ public class Services {
         if (product == null) {
             return false;
         }
-        world.setMoney(world.getMoney()-manager.getSeuil());
+        world.setMoney(world.getMoney() - manager.getSeuil());
         product.setManagerUnlocked(true);
         manager.setUnlocked(true);
         this.saveWorldToXml(world, username);

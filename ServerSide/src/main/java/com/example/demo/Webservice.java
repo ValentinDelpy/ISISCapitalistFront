@@ -46,19 +46,27 @@ public class Webservice {
         return Response.ok(services.readWorldFromXml(username)).build();
     }
     
-    //@PUT
-    //@Path("product")
-    //@Consumes({MediaType.APPLICATION_JSON})
-    //public Response editProduct(String data) throws FileNotFoundException, JAXBException{
-     //   ProductType product = new Gson().fromJson(data, ProductType.class);
-     //   return Response.ok(services.updateProduct(data, product)).build();
-    //}
-    
-    //@PUT
-    //@Path("product")
-    //@Consumes({MediaType.APPLICATION_JSON})
-    //public Response editManager(String data) throws FileNotFoundException, JAXBException{
-     //   PallierType manager = new Gson().fromJson(data, PallierType.class);
-     //   return Response.ok(services.updateManager(data, manager)).build();
-    //}
+    @GET
+    @Path("reset")
+    @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public Response getXmlReset(@Context HttpServletRequest request) throws JAXBException {
+        String username = request.getHeader("X-user");
+        return Response.ok(services.readWorldFromXml(username)).build();
+    }
+
+    @PUT
+    @Path("product")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response editProduct(String data) throws FileNotFoundException, JAXBException {
+        ProductType product = new Gson().fromJson(data, ProductType.class);
+        return Response.ok(services.updateProduct(data, product)).build();
+    }
+
+    @PUT
+    @Path("product")
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response editManager(String data) throws FileNotFoundException, JAXBException {
+        PallierType manager = new Gson().fromJson(data, PallierType.class);
+        return Response.ok(services.updateManager(data, manager)).build();
+    }
 }

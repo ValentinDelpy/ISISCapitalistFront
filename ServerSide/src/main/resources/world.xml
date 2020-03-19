@@ -12,8 +12,8 @@
     <products>
         <product>
             <id>1</id>
-            <name>Ruby</name>
-            <logo>icones/ruby.jpg</logo>
+            <name>Pomme de terre</name>
+            <logo>icones/pomme_de_terre.jpg</logo>
             <cout>4</cout>
             <croissance>1.07</croissance>
             <revenu>1</revenu>
@@ -25,14 +25,66 @@
         </product>
         <product>
             <id>2</id>
-            <name>Pointu</name>
-            <logo>icones/pointu.jpg</logo>
+            <name>Vodka</name>
+            <logo>icones/vodka.jpg</logo>
             <cout>40</cout>
             <croissance>1.07</croissance>
             <revenu>10</revenu>
             <vitesse>2500</vitesse>
             <quantite>0</quantite>
             <timeleft>2500</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers></palliers>
+        </product>
+        <product>
+            <id>3</id>
+            <name>Chapka</name>
+            <logo>icones/chapka.jpg</logo>
+            <cout>120</cout>
+            <croissance>1.07</croissance>
+            <revenu>25</revenu>
+            <vitesse>5000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>5000</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers></palliers>
+        </product>
+        <product>
+            <id>4</id>
+            <name>AK-47</name>
+            <logo>icones/ak47.jpg</logo>
+            <cout>500</cout>
+            <croissance>1.07</croissance>
+            <revenu>50</revenu>
+            <vitesse>7500</vitesse>
+            <quantite>0</quantite>
+            <timeleft>7500</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers></palliers>
+        </product>
+        <product>
+            <id>5</id>
+            <name>Tank</name>
+            <logo>icones/tank.jpg</logo>
+            <cout>10000</cout>
+            <croissance>1.07</croissance>
+            <revenu>100</revenu>
+            <vitesse>10000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>10000</timeleft>
+            <managerUnlocked>0</managerUnlocked>
+            <palliers></palliers>
+        </product>
+        <product>
+            <id>6</id>
+            <name>Goulag</name>
+            <logo>icones/goulag.jpg</logo>
+            <cout>10000</cout>
+            <croissance>1.07</croissance>
+            <revenu>1000</revenu>
+            <vitesse>20000</vitesse>
+            <quantite>0</quantite>
+            <timeleft>20000</timeleft>
             <managerUnlocked>0</managerUnlocked>
             <palliers></palliers>
         </product>

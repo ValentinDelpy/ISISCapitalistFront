@@ -13,12 +13,8 @@
   background-color:#C4151C;
   color:white;
   font-family: 'Russo One', sans-serif;
-  height:26vh;
 }
 
-.card:hover {
-  box-shadow: 0 5px 5px rgba(255,255,255,1), 0 6px 6px rgba(255,255,255,1);
-}
 .card > .card-inner {
   padding:10px;
 }
@@ -31,6 +27,7 @@
 }
 .card img{
   width:100%;
+
 }
 
 .btn{

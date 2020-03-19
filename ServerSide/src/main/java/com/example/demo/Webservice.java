@@ -16,6 +16,7 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.DELETE;
 import static javax.ws.rs.HttpMethod.PUT;
@@ -56,7 +57,7 @@ public class Webservice {
     @PUT
     @Path("product")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editProduct(String data, String username) throws FileNotFoundException, JAXBException {
+    public void editProduct(@FormParam("data")String data, @FormParam("username")String username) throws FileNotFoundException, JAXBException {
         ProductType product = new Gson().fromJson(data, ProductType.class);
         services.updateProduct(username, product);
     }
@@ -64,7 +65,7 @@ public class Webservice {
     @PUT
     @Path("manager")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editManager(String data, String username) throws FileNotFoundException, JAXBException {
+    public void editManager(@FormParam("data")String data, @FormParam("username")String username) throws FileNotFoundException, JAXBException {
         PallierType manager = new Gson().fromJson(data, PallierType.class);
         services.updateManager(username, manager);
 
@@ -73,14 +74,14 @@ public class Webservice {
     @PUT
     @Path("upgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
+    public void editUpgrade(@FormParam("data")String data, @FormParam("username")String username) throws JAXBException, FileNotFoundException{
         PallierType upgrade = new Gson().fromJson(data, PallierType.class);
         services.updateUpgrade(username, upgrade);
     }
     @PUT
     @Path("angelupgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editAngelUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
+    public void editAngelUpgrade(@FormParam("data")String data, @FormParam("username")String username) throws JAXBException, FileNotFoundException{
         PallierType upgrade = new Gson().fromJson(data, PallierType.class);
         services.updateUpgrade(username, upgrade);
     }
@@ -88,7 +89,7 @@ public class Webservice {
     @DELETE
     @Path("world")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void resetWorld(String username) throws FileNotFoundException, JAXBException{
+    public void resetWorld(@FormParam("username")String username) throws FileNotFoundException, JAXBException{
         World w = services.readWorldFromXml(username);
         double scoreToKeep = w.getScore();
         double totalangels = w.getTotalangels();

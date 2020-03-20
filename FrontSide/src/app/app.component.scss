@@ -17,7 +17,9 @@
    color:white;
   }
 
+
   #sidebar-wrapper {
+    height: 100vh;
     min-height: 100vh;
     margin-left: -15rem;
     -webkit-transition: margin .25s ease-out;
@@ -43,7 +45,11 @@
     margin-left: 0;
   }
 
-  @media (min-width: 200px) {
+  .mt-n26 {
+    margin-top: -33vh !important;
+  }
+
+  @media (min-width: 768px) {
     #sidebar-wrapper {
       margin-left: 0;
     }

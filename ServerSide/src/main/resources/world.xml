@@ -1,7 +1,7 @@
 <world
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
-    <name>Les petits dinosaures</name>
+    <name>ISIS Communist</name>
     <logo>icones/background.png</logo>
     <money>5</money>
     <score>0</score>

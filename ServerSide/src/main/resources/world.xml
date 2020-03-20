@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>Les petits dinosaures</name>
     <logo>icones/petit_dinosaure.jpg</logo>
-    <money>0</money>
+    <money>5</money>
     <score>0</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>

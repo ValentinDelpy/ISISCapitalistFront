@@ -86,8 +86,28 @@ export class ProductComponent implements OnInit, AfterViewInit {
       this.product.timeleft = this.product.vitesse;
       this.lastupdate = Date.now();
       this.isRun = true;
+      console.log('test2');
     }
   }
+
+  achatProduct() {
+    // console.log(this.calcMaxCanBuy())
+    console.log("oui");
+    if (this._qtmulti <= this.calcMaxCanBuy()) {
+      const coutAchat = this.product.cout * this._qtmulti;
+      this.product.quantite = this.product.quantite + this._qtmulti;
+      this.notifyMoney.emit(coutAchat);
+      // bonus d'achat spécifique à chaque produit
+      this.product.palliers.pallier.forEach(value => {
+        if (!value.unlocked && this.product.quantite > value.seuil) {
+          this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
+          //this.calcUpgrade(value);
+          //this.notifyService.showSuccess('déblocage d\'un bonus ' + value.typeratio + ' effectué pour ' + this.product.name, 'BONUS');
+        }
+      });
+    }
+  }
+
   calcScore() {
     if (this.isRun) {
       if (this.product.timeleft > 0) {

@@ -2,7 +2,7 @@
     xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>Les petits dinosaures</name>
-    <logo>icones/petit_dinosaure.jpg</logo>
+    <logo>icones/background.png</logo>
     <money>5</money>
     <score>0</score>
     <totalangels>0</totalangels>
@@ -51,8 +51,8 @@
         </product>
         <product>
             <id>4</id>
-            <name>AK-47</name>
-            <logo>icones/ak47.jpg</logo>
+            <name>Dimitri</name>
+            <logo>icones/dimitri.jpg</logo>
             <cout>500</cout>
             <croissance>1.07</croissance>
             <revenu>50</revenu>

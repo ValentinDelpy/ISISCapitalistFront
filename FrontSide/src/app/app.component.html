@@ -14,20 +14,20 @@
 </head>
 
 <body>
-  <div class="d-flex container-fluid justify-content-center align-items-center" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-dark border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
-      <div class="list-group list-group-flush">
-        <a href="#" class="list-group-item list-group-item-action bg-info py-5 mb-4 mt-5 text-center text-light rounded">Career</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info py-5 mb-4 text-center text-light rounded">Unlocks</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info py-5 mb-4 text-center text-light rounded">Upgardes</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info py-5 mb-4 text-center text-light rounded">Managers</a>
-        <a href="#" class="list-group-item list-group-item-action bg-info  py-5 text-center text-light rounded">Investors</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+    <div class="d-flex" id="wrapper">
 
+      <!-- Sidebar -->
+      <div class="bg-red border-right" id="sidebar-wrapper" >
+        <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
+
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-5 bg-yellow text-center text-dark rounded"><h4>Career</h4></a>
+          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Unlocks</h4></a>
+          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Upgrades</h4></a>
+          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Managers</h4></a>
+          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Investors</h4></a>
+        </div>
+      </div>
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
@@ -51,17 +51,17 @@
         <div class="row justify-content-center">
         <div class="col-md-10">
           <app-product
-                       [prod]="world.products.product[0]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[0]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
           <app-product
-                       [prod]="world.products.product[1]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[1]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
           <app-product
-                       [prod]="world.products.product[2]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[2]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
           <app-product
-                       [prod]="world.products.product[3]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[3]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
           <app-product
-                       [prod]="world.products.product[4]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[4]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
           <app-product
-                       [prod]="world.products.product[5]" (notifyProduction)="onProductionDone($event)" class="product col-md-4"></app-product>
+                       [prod]="world.products.product[5]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
         </div>
 
         </div>

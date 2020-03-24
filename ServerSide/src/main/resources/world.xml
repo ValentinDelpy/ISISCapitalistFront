@@ -232,8 +232,8 @@
     </angelupgrades> 
     <managers>
         <pallier>
-            <name>Le gardien du zoo</name>
-            <logo>icones/gardien.jpg</logo>
+            <name>Loukatchenko</name>
+            <logo>icones/loukatchenko.jpg</logo>
             <seuil>1000</seuil>
             <idcible>1</idcible>
             <ratio></ratio>
@@ -241,10 +241,46 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Jean-Michel le dino</name>
-            <logo>icones/jean_michel_dino.jpg</logo>
+            <name>Gorbatchev</name>
+            <logo>icones/gorbatchev.jpg</logo>
             <seuil>15000</seuil>
             <idcible>2</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Karl Marx</name>
+            <logo>icones/karlmarx.jpg</logo>
+            <seuil>15000</seuil>
+            <idcible>3</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Vladimir Putin</name>
+            <logo>icones/poutine.jpg</logo>
+            <seuil>15000</seuil>
+            <idcible>4</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Joseph Staline</name>
+            <logo>icones/poutine.jpg</logo>
+            <seuil>15000</seuil>
+            <idcible>5</idcible>
+            <ratio></ratio>
+            <typeratio></typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Lénine</name>
+            <logo>icones/poutine.jpg</logo>
+            <seuil>15000</seuil>
+            <idcible>6</idcible>
             <ratio></ratio>
             <typeratio></typeratio>
             <unlocked>0</unlocked>

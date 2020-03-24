@@ -14,20 +14,35 @@
 </head>
 
 <body>
-    <div class="d-flex" id="wrapper">
+  <div class="d-flex" id="wrapper">
 
-      <!-- Sidebar -->
-      <div class="bg-red border-right" id="sidebar-wrapper" >
-        <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
+    <!-- Sidebar -->
+    <div class="bg-red border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
 
-        <div class="list-group list-group-flush">
-          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-5 bg-yellow text-center text-dark rounded"><h4>Career</h4></a>
-          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Unlocks</h4></a>
-          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Upgrades</h4></a>
-          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Managers</h4></a>
-          <a href="#" class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded"><h4>Investors</h4></a>
-        </div>
+      <div class="list-group list-group-flush">
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-5 bg-yellow text-center text-dark rounded">
+          <h4>Career</h4>
+        </a>
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          <h4>Unlocks</h4>
+        </a>
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          <h4>Upgrades</h4>
+        </a>
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="managersModal.show()">
+          <h4>Managers</h4>
+        </a>
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          <h4>Investors</h4>
+        </a>
       </div>
+    </div>
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
@@ -37,10 +52,11 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span class="sr-only">(current)</span></a>
+              <a class="nav-link text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
+                  class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link display-4 mx-5" href="#">Money:   <span [innerHTML]="world.money | bigvalue"> </span></a>
+              <a class="nav-link display-4 mx-5" href="#">Money: <span [innerHTML]="world.money | bigvalue"> </span></a>
             </li>
           </ul>
         </div>
@@ -49,26 +65,39 @@
 
       <div class="container-fluid">
         <div class="row justify-content-center">
-        <div class="col-md-10">
-          <app-product
-                       [prod]="world.products.product[0]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-          <app-product
-                       [prod]="world.products.product[1]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-          <app-product
-                       [prod]="world.products.product[2]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-          <app-product
-                       [prod]="world.products.product[3]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-          <app-product
-                       [prod]="world.products.product[4]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-          <app-product
-                       [prod]="world.products.product[5]" (notifyProduction)="onProductionDone($event)" class="product col-lg-4 col-sm-6"></app-product>
-        </div>
+          <div class="col-md-10">
+            <app-product [prod]="world.products.product[0]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+            <app-product [prod]="world.products.product[1]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+            <app-product [prod]="world.products.product[2]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+            <app-product [prod]="world.products.product[3]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+            <app-product [prod]="world.products.product[4]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+            <app-product [prod]="world.products.product[5]" (notifyProduction)="onProductionDone($event)"
+              class="product col-lg-4 col-sm-6"></app-product>
+          </div>
 
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
+  <app-modal #managersModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Dictators make you feel better !</h4>
+    </div>
+    <div class="app-modal-body">
+      <div *ngFor="let manager of world.managers.pallier">
+        // a completer pour réaliser le rendu d’une ligne de manager
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-default" (click)="managersModal.hide()">Close</button>
+    </div>
+  </app-modal>
   <script src="" async defer></script>
 </body>
 

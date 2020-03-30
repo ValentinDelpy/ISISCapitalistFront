@@ -21,26 +21,22 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 public class Services {
-    public World readWorldFromXml(String pseudo) {
-        World world = null;
-        JAXBContext jaxbContext;
-        InputStream input;
+    InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");
+
+    public World readWorldFromXml(String username) throws JAXBException {
         try {
-            try {
-                File f = new File(pseudo + "world.xml");
-                input = new FileInputStream(f);
-            } catch (Exception e) {
-                input = getClass().getClassLoader().getResourceAsStream("world.xml");
-                System.out.println("pas de monde associé au joueur" + e.getMessage());
-            }
-            jaxbContext = JAXBContext.newInstance(World.class);
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            world = (World) jaxbUnmarshaller.unmarshal(input);
-        } catch (JAXBException ex) {
-            System.out.println("Erreur lecture du fichier:" + ex.getMessage());
-            ex.printStackTrace();
-        }
+        File file = new File(username+"-world.xml");    
+        JAXBContext cont = JAXBContext.newInstance(World.class);
+        Unmarshaller u =cont.createUnmarshaller();
+        World world =(World) u.unmarshal(file);
         return world;
+        }
+        catch (Exception e) {
+        JAXBContext cont = JAXBContext.newInstance(World.class);
+        Unmarshaller u = cont.createUnmarshaller();
+        World world = (World) u.unmarshal(input);
+        return world;
+        }
     }
     
     void saveWorldToXml(World world, String pseudo) throws FileNotFoundException, JAXBException {

@@ -11,6 +11,7 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.DELETE;
 import static javax.ws.rs.HttpMethod.PUT;
@@ -44,34 +45,34 @@ public class Webservice {
         String username = request.getHeader("X-user");
         return Response.ok(services.readWorldFromXml(username)).build();
     }
-//    @PUT
-  //  @Path("/product")
-    //@Consumes({MediaType.APPLICATION_JSON})
-     //public void editProduct(String data, String username) throws FileNotFoundException, JAXBException {
-       // ProductType product = new Gson().fromJson(data, ProductType.class);
-         //      services.updateProduct(username, product);
-    //}
-     //
-    //@Path("/manager")
-    //Consumes({MediaType.APPLICATION_JSON})
- //    public void editManager(String data, String username) throws FileNotFoundException, JAXBException {
- //       PallierType manager = new Gson().fromJson(data, PallierType.class);
-  //       services.updateManager(username, manager);
- //   }
-  //    @PUT
-  //  @Path("/upgrade")
-  //  @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
- //   public void editUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
- //       PallierType upgrade = new Gson().fromJson(data, PallierType.class);
- //       services.updateUpgrade(username, upgrade);
- //   }
-  //  @PUT
-  //  @Path("/angelupgrade")
- //   @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
- //   public void editAngelUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
-  //      PallierType upgrade = new Gson().fromJson(data, PallierType.class);
- //       services.updateUpgrade(username, upgrade);
-  //  }
+    @PUT
+    @Path("/product")
+    @Consumes({MediaType.APPLICATION_JSON})
+     public void editProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException, JAXBException {
+        String username = request.getHeader("X-user");
+        services.updateProduct(username, product);
+    }
+    @PUT
+    @Path("/manager")
+    @Consumes({MediaType.APPLICATION_JSON})
+     public void editManager(@Context HttpServletRequest request, PallierType manager) throws FileNotFoundException, JAXBException {
+        String username = request.getHeader("X-user");
+        services.updateManager(username, manager);
+    }
+    @PUT
+    @Path("/upgrade")
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void editUpgrade(@Context HttpServletRequest request, PallierType upgrade) throws JAXBException, FileNotFoundException{
+        String username = request.getHeader("X-user");
+        services.updateUpgrade(username, upgrade);
+    }
+   @PUT
+   @Path("/angelupgrade")
+   @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+   public void editAngelUpgrade(@Context HttpServletRequest request,PallierType ange) throws JAXBException, FileNotFoundException{
+    String username = request.getHeader("X-user");
+    services.updateUpgrade(username, ange);
+  }
 
     @DELETE
     @Path("/world")

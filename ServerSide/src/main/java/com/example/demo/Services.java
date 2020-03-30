@@ -43,7 +43,7 @@ public class Services {
             try {
                 JAXBContext cont = JAXBContext.newInstance(World.class);
                 Unmarshaller u = cont.createUnmarshaller();
-                world = (World) u.unmarshal(new File("testworld.xml"));
+                world = (World) u.unmarshal(new File("world.xml"));
             }
             catch (JAXBException e) {
                 e.printStackTrace();

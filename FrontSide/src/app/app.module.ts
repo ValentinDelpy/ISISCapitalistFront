@@ -10,6 +10,7 @@ import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
 import { ModalComponent } from './modal/modal.component';
 import {NotificationService} from './notification.service';
+import { TimerPipe } from './timer.pipe';
 
 // @ts-ignore
 @NgModule({
@@ -17,7 +18,8 @@ import {NotificationService} from './notification.service';
     AppComponent,
     ProductComponent,
     BigvaluePipe,
-    ModalComponent
+    ModalComponent,
+    TimerPipe
   ],
   imports: [
     HttpClientModule,

@@ -38,43 +38,43 @@ public class Webservice {
         this.services = new Services();
     }
     @GET
-    @Path("world")
+    @Path("/world")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Response getXml(@Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         return Response.ok(services.readWorldFromXml(username)).build();
     }
-    @PUT
-    @Path("product")
-    @Consumes({MediaType.APPLICATION_JSON})
-     public void editProduct(String data, String username) throws FileNotFoundException, JAXBException {
-        ProductType product = new Gson().fromJson(data, ProductType.class);
-               services.updateProduct(username, product);
-    }
-     
-    @Path("manager")
-    @Consumes({MediaType.APPLICATION_JSON})
-     public void editManager(String data, String username) throws FileNotFoundException, JAXBException {
-        PallierType manager = new Gson().fromJson(data, PallierType.class);
-         services.updateManager(username, manager);
-    }
-      @PUT
-    @Path("upgrade")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
-        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
-        services.updateUpgrade(username, upgrade);
-    }
-    @PUT
-    @Path("angelupgrade")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editAngelUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
-        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
-        services.updateUpgrade(username, upgrade);
-    }
+//    @PUT
+  //  @Path("/product")
+    //@Consumes({MediaType.APPLICATION_JSON})
+     //public void editProduct(String data, String username) throws FileNotFoundException, JAXBException {
+       // ProductType product = new Gson().fromJson(data, ProductType.class);
+         //      services.updateProduct(username, product);
+    //}
+     //
+    //@Path("/manager")
+    //Consumes({MediaType.APPLICATION_JSON})
+ //    public void editManager(String data, String username) throws FileNotFoundException, JAXBException {
+ //       PallierType manager = new Gson().fromJson(data, PallierType.class);
+  //       services.updateManager(username, manager);
+ //   }
+  //    @PUT
+  //  @Path("/upgrade")
+  //  @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+ //   public void editUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
+ //       PallierType upgrade = new Gson().fromJson(data, PallierType.class);
+ //       services.updateUpgrade(username, upgrade);
+ //   }
+  //  @PUT
+  //  @Path("/angelupgrade")
+ //   @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+ //   public void editAngelUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
+  //      PallierType upgrade = new Gson().fromJson(data, PallierType.class);
+ //       services.updateUpgrade(username, upgrade);
+  //  }
 
     @DELETE
-    @Path("world")
+    @Path("/world")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public void resetWorld(String username) throws FileNotFoundException, JAXBException{
         World w = services.readWorldFromXml(username);

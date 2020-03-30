@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.example.demo;
 
 import com.google.gson.Gson;
@@ -16,7 +11,6 @@ import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.DELETE;
 import static javax.ws.rs.HttpMethod.PUT;
@@ -39,57 +33,50 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Path("/api")
 public class Webservice {
-
     Services services;
-
     public Webservice() {
         this.services = new Services();
     }
-
     @GET
     @Path("world")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response getXml(@Context HttpServletRequest request) throws JAXBException, FileNotFoundException {
+    public Response getXml(@Context HttpServletRequest request) throws JAXBException {
         String username = request.getHeader("X-user");
         return Response.ok(services.readWorldFromXml(username)).build();
     }
-
     @PUT
     @Path("product")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editProduct(@FormParam ("data") String data,@FormParam ("username") String username) throws FileNotFoundException, JAXBException {
+     public void editProduct(String data, String username) throws FileNotFoundException, JAXBException {
         ProductType product = new Gson().fromJson(data, ProductType.class);
-        services.updateProduct(username, product);
+               services.updateProduct(username, product);
     }
-
-    @PUT
+     
     @Path("manager")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editManager(@FormParam ("data") String data,@FormParam ("username") String username) throws FileNotFoundException, JAXBException {
+     public void editManager(String data, String username) throws FileNotFoundException, JAXBException {
         PallierType manager = new Gson().fromJson(data, PallierType.class);
-        services.updateManager(username, manager);
+         services.updateManager(username, manager);
     }
-    
-    @PUT
+      @PUT
     @Path("upgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editUpgrade(@FormParam ("data") String data,@FormParam ("username") String username) throws JAXBException, FileNotFoundException{
+    public void editUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
         PallierType upgrade = new Gson().fromJson(data, PallierType.class);
         services.updateUpgrade(username, upgrade);
     }
-    
     @PUT
     @Path("angelupgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editAngelUpgrade(@FormParam ("data") String data,@FormParam ("username") String username) throws JAXBException, FileNotFoundException{
+    public void editAngelUpgrade(String data, String username) throws JAXBException, FileNotFoundException{
         PallierType upgrade = new Gson().fromJson(data, PallierType.class);
         services.updateUpgrade(username, upgrade);
     }
-    
+
     @DELETE
     @Path("world")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void resetWorld(@FormParam ("username") String username) throws FileNotFoundException, JAXBException{
+    public void resetWorld(String username) throws FileNotFoundException, JAXBException{
         World w = services.readWorldFromXml(username);
         double scoreToKeep = w.getScore();
         double totalangels = w.getTotalangels();

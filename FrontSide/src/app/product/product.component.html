@@ -10,9 +10,13 @@
         <div class="progress" #bar> </div>
         <h2>{{product.name}}</h2>
         <h3> Coût : {{product.cout}}</h3>
+        <h5 class="card-text" [innerHTML]="product.revenu*product.quantite | bigvalue"></h5>
       </div>
       <div class="content">
-        <p class="card-text"><small class="text-muted"><button href="#" class="btn" (click)="achatProduct()">Acheter</button></small></p>
+        <p class="card-text"><small class="text-muted"><button href="#" class="btn" (click)="achatProduct()">
+          Acheter: <span id="productcout" class="badge badge-secondary" [innerHTML]="product.cout | bigvalue"></span>
+          <span class="badge badge-secondary">x{{_qtmulti}}</span>
+        </button></small></p>
       </div>
     </div>
   </div>

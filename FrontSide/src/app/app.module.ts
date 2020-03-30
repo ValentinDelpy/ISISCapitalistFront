@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
 import { ModalComponent } from './modal/modal.component';
+import {NotificationService} from './notification.service';
 
 // @ts-ignore
 @NgModule({
@@ -23,7 +24,10 @@ import { ModalComponent } from './modal/modal.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [RestserviceService],
+  providers: [
+    RestserviceService,
+    NotificationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

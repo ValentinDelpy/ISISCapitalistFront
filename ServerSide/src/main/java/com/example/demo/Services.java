@@ -33,19 +33,21 @@ public class Services {
         JAXBContext jaxbContext;
         InputStream input;
         try {
-            try {
-                File f = new File(pseudo + "world.xml");
-                input = new FileInputStream(f);
-            } catch (Exception e) {
-                input = getClass().getClassLoader().getResourceAsStream("world.xml");
-                System.out.println("pas de monde associé au joueur" + e.getMessage());
-            }
+            File f = new File(pseudo + "world.xml");
             jaxbContext = JAXBContext.newInstance(World.class);
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-            world = (World) jaxbUnmarshaller.unmarshal(input);
+            world = (World) jaxbUnmarshaller.unmarshal(f);
+
         } catch (JAXBException ex) {
             System.out.println("Erreur lecture du fichier:" + ex.getMessage());
-            ex.printStackTrace();
+            try {
+                JAXBContext cont = JAXBContext.newInstance(World.class);
+                Unmarshaller u = cont.createUnmarshaller();
+                world = (World) u.unmarshal(new File("testworld.xml"));
+            }
+            catch (JAXBException e) {
+                e.printStackTrace();
+            }
         }
         return world;
     }

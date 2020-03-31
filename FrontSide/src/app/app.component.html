@@ -87,15 +87,29 @@
 
   <app-modal #managersModal>
     <div class="app-modal-header">
-      <h4 class="modal-title">Dictators make you feel better !</h4>
+      <h4 class="modal-title">Managers !</h4>
     </div>
     <div class="app-modal-body">
+      
       <div *ngFor="let manager of world.managers.pallier">
-        // a completer pour réaliser le rendu d’une ligne de manager
+        <div *ngIf="!manager.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold text-secondary">{{manager.name}}</span>
+            <span class="row text-center"></span>
+            <span class="row text-center text-secondary">{{manager.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-danger btn-lg" 
+              [disabled]="world.money < manager.seuil">Hire!</button>
+          </div>
+        </div>
       </div>
     </div>
     <div class="app-modal-footer">
-      <button type="button" class="btn btn-default" (click)="managersModal.hide()">Close</button>
+      <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
     </div>
   </app-modal>
   <script src="" async defer></script>

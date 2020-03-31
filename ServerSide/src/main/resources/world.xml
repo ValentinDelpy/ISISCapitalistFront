@@ -233,7 +233,7 @@
     <managers>
         <pallier>
             <name>Loukatchenko</name>
-            <logo>icones/loukatchenko.jpg</logo>
+            <logo>icones/loukachenko.jpg</logo>
             <seuil>1000</seuil>
             <idcible>1</idcible>
             <ratio></ratio>
@@ -251,7 +251,7 @@
         </pallier>
         <pallier>
             <name>Karl Marx</name>
-            <logo>icones/karlmarx.jpg</logo>
+            <logo>icones/karlmarx.png</logo>
             <seuil>15000</seuil>
             <idcible>3</idcible>
             <ratio></ratio>
@@ -269,7 +269,7 @@
         </pallier>
         <pallier>
             <name>Joseph Staline</name>
-            <logo>icones/poutine.jpg</logo>
+            <logo>icones/staline.jpg</logo>
             <seuil>15000</seuil>
             <idcible>5</idcible>
             <ratio></ratio>
@@ -278,7 +278,7 @@
         </pallier>
         <pallier>
             <name>Lénine</name>
-            <logo>icones/poutine.jpg</logo>
+            <logo>icones/lenine.jpg</logo>
             <seuil>15000</seuil>
             <idcible>6</idcible>
             <ratio></ratio>

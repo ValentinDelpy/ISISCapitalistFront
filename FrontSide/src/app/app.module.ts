@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
 import { ModalComponent } from './modal/modal.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 // @ts-ignore
 @NgModule({
@@ -21,7 +22,8 @@ import { ModalComponent } from './modal/modal.component';
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressBarModule
   ],
   providers: [RestserviceService],
   bootstrap: [AppComponent]

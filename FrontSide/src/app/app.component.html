@@ -18,7 +18,7 @@
 
     <!-- Sidebar -->
     <div class="bg-red border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
+      <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4"  alt=""/> </div>
 
       <div class="list-group list-group-flush">
         <a href="#"
@@ -66,17 +66,17 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-md-10">
-            <app-product [prod]="world.products.product[0]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[0]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
-            <app-product [prod]="world.products.product[1]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[1]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
-            <app-product [prod]="world.products.product[2]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[2]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
-            <app-product [prod]="world.products.product[3]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[3]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
-            <app-product [prod]="world.products.product[4]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[4]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
-            <app-product [prod]="world.products.product[5]" (notifyProduction)="onProductionDone($event)"
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="world.products.product[5]" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
               class="product col-lg-4 col-sm-6"></app-product>
           </div>
 

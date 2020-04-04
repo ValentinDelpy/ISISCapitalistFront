@@ -7,6 +7,7 @@ export class World {
     public set name(value: string) {
         this._name = value;
     }
+
     private _logo: string;
     public get logo(): string {
         return this._logo;
@@ -148,6 +149,7 @@ export class Product {
 
 export class Pallier {
     name: string;
+    description: string;
     logo: string;
     seuil: number;
     idcible: number;

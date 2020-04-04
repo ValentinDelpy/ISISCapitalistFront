@@ -30,7 +30,7 @@
           <h4>Unlocks</h4>
         </a>
         <a href="#"
-          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="upgradModal.show()">
           <h4>Upgrades</h4>
         </a>
         <a href="#"
@@ -97,12 +97,12 @@
             <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
           </div>
           <div class="col-md-5">
-            <span class="txt2 row text-center font-weight-bold text-secondary">{{manager.name}}</span>
+            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span>
             <span class="row text-center"></span>
             <span class="row text-center text-secondary">{{manager.seuil}}</span>
           </div>
           <div class="col-md-3">
-            <button class="btn btn-danger btn-lg" 
+            <button class="btn btn-danger btn-lg mt-5" 
               [disabled]="world.money < manager.seuil">Hire!</button>
           </div>
         </div>
@@ -112,6 +112,35 @@
       <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
     </div>
   </app-modal>
+
+  <app-modal #upgradModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Upgrades !</h4>
+    </div> 
+    <div class="app-modal-body">
+      <div *ngFor="let upgrade of world.upgrades.pallier">
+        <div *ngIf="!upgrade.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}} + {{upgrade.description}}</span>
+            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.description}}</span>
+            <span class="row text-center">{{upgrade.typeratio}}</span>
+            <span class="row text-center">{{upgrade.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-danger btn-lg mt-5" 
+              [disabled]="world.money < upgrade.seuil">Buy!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="upgradModal.hide()">Close</button>
+    </div>
+  </app-modal>
+
   <script src="" async defer></script>
 </body>
 

@@ -92,6 +92,7 @@
     <allunlocks>
         <pallier>
             <name>Ruby omega</name>
+            <description>description</description>
             <logo>icones/ruby.jpg</logo>
             <seuil>25</seuil>
             <idcible>1</idcible>
@@ -101,6 +102,7 @@
         </pallier>
         <pallier>
             <name>Tetra ruby</name>
+            <description>description</description>
             <logo>icones/ruby.jpg</logo>
             <seuil>50</seuil>
             <idcible>1</idcible>
@@ -111,8 +113,9 @@
     </allunlocks>
     <upgrades>
         <pallier>
-            <name>Broussaille</name>
-            <logo>icones/brousse.jpg</logo>
+            <name>Tracteur</name>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/tractor.jpg</logo>
             <seuil>250000</seuil>
             <idcible>1</idcible>
             <ratio>3</ratio>
@@ -120,8 +123,9 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Grand dino</name>
-            <logo>icones/grand_dino.jpg</logo>
+            <name>Distilerie</name>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/distillery.jpg</logo>
             <seuil>500000</seuil>
             <idcible>2</idcible>
             <ratio>3</ratio>
@@ -129,8 +133,9 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Eruption</name>
-            <logo>icones/eruption.jpg</logo>
+            <name>Usine à chapka</name>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/chapka_usine.jpg</logo>
             <seuil>1000000</seuil>
             <idcible>1</idcible>
             <ratio>1.5</ratio>
@@ -138,8 +143,9 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>T-rex de compagnie</name>
-            <logo>icones/trex.jpg</logo>
+            <name>Camp</name>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/camp.jpg</logo>
             <seuil>5000000</seuil>
             <idcible>2</idcible>
             <ratio>1.5</ratio>
@@ -147,8 +153,9 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Un lac d'acide</name>
-            <logo>icones/acide.jpg</logo>
+            <name>Usine</name>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/factory.jpg</logo>
             <seuil>10000000</seuil>
             <idcible>1</idcible>
             <ratio>1.5</ratio>
@@ -156,54 +163,20 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>La grotte qui fait peur</name>
-            <logo>icones/grotte.jpg</logo>
+            <description>x3 production de pommes de terre</description>
+            <logo>icones/snowman.jpg</logo>
             <seuil>25000000</seuil>
             <idcible>2</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
             <unlocked>0</unlocked>
         </pallier>
-        <pallier>
-            <name>Papa dino</name>
-            <logo>icones/papa_dino.jpg</logo>
-            <seuil>500000000</seuil>
-            <idcible>1</idcible>
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>0</unlocked>
-        </pallier>
-        <pallier>
-            <name>Maman dino</name>
-            <logo>icones/maman_dino.jpg</logo>
-            <seuil> 10000000000</seuil>
-            <idcible>2</idcible>
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>0</unlocked>
-        </pallier>
-        <pallier>
-            <name>Meteorite</name>
-            <logo>icones/meteorite.jpg</logo>
-            <seuil>50000000000</seuil>
-            <idcible>0</idcible>
-            <ratio>3</ratio>
-            <typeratio>GAIN</typeratio>
-            <unlocked>0</unlocked>
-        </pallier>
-        <pallier>
-            <name>Dinosaure angélique</name>
-            <logo>icones/dino_ange.jpg</logo>
-            <seuil>250000000000</seuil>
-            <idcible>-1</idcible>
-            <ratio>1</ratio>
-            <typeratio>ANGE</typeratio>
-            <unlocked>0</unlocked>
-        </pallier>  
+       
     </upgrades>
     <angelupgrades>
         <pallier>
             <name>Dinosaure d'Hermès</name>
+            <description>description</description>
             <logo>icones/dino_hermes.jpg</logo>
             <seuil>10000</seuil>
             <idcible>0</idcible>
@@ -213,6 +186,7 @@
         </pallier>  
         <pallier>
             <name>Le saint dinosaure</name>
+            <description>description</description>
             <logo>icones/saint_dinosaure.jpg</logo>
             <seuil>100000</seuil>
             <idcible>-1</idcible>
@@ -222,6 +196,7 @@
         </pallier>  
         <pallier>
             <name>La sainte météorite</name>
+            <description>description</description>
             <logo>icones/sainte_meteorite</logo>
             <seuil>100000000</seuil>
             <idcible>-1</idcible>
@@ -233,6 +208,7 @@
     <managers>
         <pallier>
             <name>Loukatchenko</name>
+            <description>Gère le management des pommes de terre</description>
             <logo>icones/loukachenko.jpg</logo>
             <seuil>1000</seuil>
             <idcible>1</idcible>
@@ -242,7 +218,11 @@
         </pallier>
         <pallier>
             <name>Gorbatchev</name>
+            <description>Gère le management des la vodka</description>
+
             <logo>icones/gorbatchev.jpg</logo>
+                        
+
             <seuil>15000</seuil>
             <idcible>2</idcible>
             <ratio></ratio>
@@ -251,6 +231,7 @@
         </pallier>
         <pallier>
             <name>Karl Marx</name>
+            <description>Gère le management des chapka</description>
             <logo>icones/karlmarx.png</logo>
             <seuil>15000</seuil>
             <idcible>3</idcible>
@@ -260,6 +241,7 @@
         </pallier>
         <pallier>
             <name>Vladimir Putin</name>
+            <description>Gère le management des dimitris</description>
             <logo>icones/poutine.jpg</logo>
             <seuil>15000</seuil>
             <idcible>4</idcible>
@@ -269,6 +251,7 @@
         </pallier>
         <pallier>
             <name>Joseph Staline</name>
+            <description>Gère le management des tanks</description>
             <logo>icones/staline.jpg</logo>
             <seuil>15000</seuil>
             <idcible>5</idcible>
@@ -278,6 +261,7 @@
         </pallier>
         <pallier>
             <name>Lénine</name>
+            <description>Gère le management des goulags</description>
             <logo>icones/lenine.jpg</logo>
             <seuil>15000</seuil>
             <idcible>6</idcible>
@@ -286,5 +270,4 @@
             <unlocked>0</unlocked>
         </pallier>
     </managers>
-
 </world>

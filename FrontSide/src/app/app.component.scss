@@ -17,6 +17,12 @@
    color:white;
   }
 
+  .clrgrd{
+    background: -webkit-linear-gradient(#cb0814, #fed630);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .bg-red{
     background-color: #cb0814;
   }

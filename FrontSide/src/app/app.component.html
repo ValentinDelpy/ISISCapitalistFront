@@ -8,6 +8,10 @@
 
 <head>
   <meta charset="utf-8">
+  <script src="https://kit.fontawesome.com/51f96b75a0.js" crossorigin="anonymous"></script>
+  <link 
+  href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+  rel="stylesheet"  type='text/css'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +30,7 @@
           <h4>Career</h4>
         </a>
         <a href="#"
-          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="unlockModal.show()">
           <h4>Unlocks</h4>
         </a>
         <a href="#"
@@ -38,7 +42,7 @@
           <h4>Managers</h4>
         </a>
         <a href="#"
-          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded">
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="angelModal.show()">
           <h4>Investors</h4>
         </a>
       </div>
@@ -52,11 +56,12 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
+              <a class="nav-link clrgrd text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
                   class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-              <a class="nav-link display-4 mx-5" href="#">Money: <span [innerHTML]="world.money | bigvalue"> </span></a>
+              <i class="fas fa-ruler-vertical"></i>
+              <a class="nav-link display-4 mx-5" href="#"><span [innerHTML]="world.money | bigvalue"> </span></a>
             </li>
           </ul>
         </div>
@@ -97,9 +102,9 @@
             <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
           </div>
           <div class="col-md-5">
-            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span>
+            <h3><span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span></h3>
             <span class="row text-center"></span>
-            <span class="row text-center text-secondary">{{manager.seuil}}</span>
+            <h3><span class="row text-center text-secondary">{{manager.seuil}}</span></h3>
           </div>
           <div class="col-md-3">
             <button class="btn btn-danger btn-lg mt-5" 
@@ -124,7 +129,7 @@
             <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
           </div>
           <div class="col-md-5">
-            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}} + {{upgrade.description}}</span>
+           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}} + {{upgrade.description}}</span></h3>
             <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.description}}</span>
             <span class="row text-center">{{upgrade.typeratio}}</span>
             <span class="row text-center">{{upgrade.seuil}}</span>
@@ -141,7 +146,57 @@
     </div>
   </app-modal>
 
-  <script src="" async defer></script>
+  <app-modal #unlockModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Upgrades !</h4>
+    </div> 
+    <div class="app-modal-body">
+      <div *ngFor="let unlock of world.allunlocks.pallier">
+        <div *ngIf="!unlock.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img [attr.src]="server+unlock.logo" class="rounded-circle round" /> </span>
+          </div>
+          <div class="col-md-5">
+           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{unlock.name}}</span></h3>
+            <span class="row text-center">{{unlock.ratio}}</span>
+            <span class="row text-center">{{unlock.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="unlockModal.hide()">Close</button>
+    </div>
+  </app-modal>
+
+  <app-modal #angelModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Angels !</h4>
+    </div>
+    <div class="app-modal-body">
+      <div *ngFor="let angel of world.angelupgrades.pallier">
+        <div *ngIf="!angel.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img [attr.src]="server+angel.logo" class="rounded-circle round"/> </span>
+          </div>
+          <div class="col-md-5">
+            <span class="txt2 row text-center font-weight-bold">{{angel.name}}</span>
+            <span class="row text-center">{{angel.typeratio}}</span>
+            <span class="row text-center">{{angel.seuil}}</span>
+          </div>
+          <div class="col-md-3">
+            <button [disabled]="world.activeangels <  angel.seuil" 
+              class="btn btn-danger btn-lg mt-5">Buy!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="app-modal-footer">
+      <button type="button" class="btn btn-danger" (click)="angelModal.hide()">Close</button>
+    </div>
+  </app-modal>
 </body>
 
 </html>

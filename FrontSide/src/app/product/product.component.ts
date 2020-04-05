@@ -121,7 +121,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
       this.product.palliers.pallier.forEach(value => {
         if (!value.unlocked && this.product.quantite > value.seuil) {
           this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
-          // this.calcUpgrade(value);
+         // this.calcUpgrade(value);
          // this.notifyService.showSuccess("déblocage d'un bonus " + value.typeratio + " effectué pour " + this.product.name, "BONUS")
         }
       });

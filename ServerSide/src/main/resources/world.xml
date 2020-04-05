@@ -91,9 +91,9 @@
     </products>
     <allunlocks>
         <pallier>
-            <name>Ruby omega</name>
+            <name>Plus de patates</name>
             <description>description</description>
-            <logo>icones/ruby.jpg</logo>
+            <logo>icones/pomme_de_terre.jpg</logo>
             <seuil>25</seuil>
             <idcible>1</idcible>
             <ratio>2</ratio>
@@ -101,9 +101,49 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
-            <name>Tetra ruby</name>
+            <name>Plus de vovo</name>
             <description>description</description>
-            <logo>icones/ruby.jpg</logo>
+            <logo>icones/vodka.jpg</logo>
+            <seuil>50</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>VITESSE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+         <pallier>
+            <name>Plus de chapkas</name>
+            <description>description</description>
+            <logo>icones/chapka.jpg</logo>
+            <seuil>25</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>VITESSE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Plus de Dimitris blyat</name>
+            <description>description</description>
+            <logo>icones/dimitri.jpg</logo>
+            <seuil>50</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>VITESSE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+         <pallier>
+            <name>Plus de tanks vroum vroum</name>
+            <description>description</description>
+            <logo>icones/tank.jpg</logo>
+            <seuil>25</seuil>
+            <idcible>1</idcible>
+            <ratio>2</ratio>
+            <typeratio>VITESSE</typeratio>
+            <unlocked>0</unlocked>
+        </pallier>
+        <pallier>
+            <name>Plus de goulags</name>
+            <description>description</description>
+            <logo>icones/goulag.jpg</logo>
             <seuil>50</seuil>
             <idcible>1</idcible>
             <ratio>2</ratio>
@@ -163,6 +203,7 @@
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
+            <name>Le froid</name>
             <description>x3 production de pommes de terre</description>
             <logo>icones/snowman.jpg</logo>
             <seuil>25000000</seuil>
@@ -175,9 +216,9 @@
     </upgrades>
     <angelupgrades>
         <pallier>
-            <name>Dinosaure d'Hermès</name>
+            <name>Ange 1</name>
             <description>description</description>
-            <logo>icones/dino_hermes.jpg</logo>
+            <logo>icones/angel.jpg</logo>
             <seuil>10000</seuil>
             <idcible>0</idcible>
             <ratio>3</ratio>
@@ -185,9 +226,9 @@
             <unlocked>0</unlocked>
         </pallier>  
         <pallier>
-            <name>Le saint dinosaure</name>
+            <name>Ange 2</name>
             <description>description</description>
-            <logo>icones/saint_dinosaure.jpg</logo>
+            <logo>icones/angel.jpg</logo>
             <seuil>100000</seuil>
             <idcible>-1</idcible>
             <ratio>2</ratio>
@@ -195,9 +236,9 @@
             <unlocked>0</unlocked>
         </pallier>  
         <pallier>
-            <name>La sainte météorite</name>
+            <name>Ange 3</name>
             <description>description</description>
-            <logo>icones/sainte_meteorite</logo>
+            <logo>icones/angel.jpg</logo>
             <seuil>100000000</seuil>
             <idcible>-1</idcible>
             <ratio>2</ratio>

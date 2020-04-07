@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RestserviceService } from './restservice.service';
 import { World, Product, Pallier } from './world';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,14 +13,24 @@ export class AppComponent {
   title = 'ISISCapitalist';
   world: World = new World();
   server: string;
-  qtmulti= 1;
+  qtmulti = 1;
 
-  constructor(private service: RestserviceService) {
+  constructor(private service: RestserviceService, private toastr: ToastrService) {
     this.server = service.getServer();
     service.getWorld().then(
 
-    world => {
-      this.world = world;
+      world => {
+        this.world = world;
+      });
+  }
+
+  showSuccess(message:string) {
+    this.toastr.success(message, 'Aye comrade !',
+      { timeOut: 2000 });;
+  }
+  showError() {
+    this.toastr.error('everything is broken', 'Major Error', {
+      timeOut: 3000
     });
   }
 
@@ -33,8 +44,8 @@ export class AppComponent {
   }
   // Commutateur pour la valeur de quantité d'achat de produits.
   // Le max étant ici, par souci de simplicité, représenté par une grande valeur;
-  commutateur(){
-    switch(this.qtmulti){
+  commutateur() {
+    switch (this.qtmulti) {
       case 1:
         this.qtmulti = 10;
         break;

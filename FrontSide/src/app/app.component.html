@@ -46,7 +46,7 @@
           <h4>Investors</h4>
         </a>
         <a href="#"
-          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="angelModal.show()">
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="showSuccess('test réussi')">
           <h4>test</h4>
         </a>
       </div>
@@ -112,7 +112,7 @@
           </div>
           <div class="col-md-3">
             <button class="btn btn-danger btn-lg mt-5" 
-              [disabled]="world.money < manager.seuil">Hire!</button>
+              [disabled]="world.money < manager.seuil" (click)="showSuccess(manager.name + ' engagé')"> Hire!</button>
           </div>
         </div>
       </div>

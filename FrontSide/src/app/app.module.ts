@@ -10,6 +10,8 @@ import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
 import { ModalComponent } from './modal/modal.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 // @ts-ignore
 @NgModule({
@@ -23,7 +25,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [RestserviceService],
   bootstrap: [AppComponent]

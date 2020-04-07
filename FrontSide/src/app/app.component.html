@@ -45,6 +45,10 @@
           class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="angelModal.show()">
           <h4>Investors</h4>
         </a>
+        <a href="#"
+          class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="angelModal.show()">
+          <h4>test</h4>
+        </a>
       </div>
     </div>
     <!-- Page Content -->
@@ -103,7 +107,7 @@
           </div>
           <div class="col-md-5">
             <h3><span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span></h3>
-            <span class="row text-center"></span>
+            <span class="row text-center text-secondary">{{manager.description}}</span>
             <h3><span class="row text-center text-secondary">{{manager.seuil}}</span></h3>
           </div>
           <div class="col-md-3">
@@ -129,7 +133,7 @@
             <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
           </div>
           <div class="col-md-5">
-           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}} + {{upgrade.description}}</span></h3>
+           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}}</span></h3>
             <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.description}}</span>
             <span class="row text-center">{{upgrade.typeratio}}</span>
             <span class="row text-center">{{upgrade.seuil}}</span>
@@ -158,6 +162,7 @@
           </div>
           <div class="col-md-5">
            <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{unlock.name}}</span></h3>
+           <span class="row text-center text-secondary">{{unlock.description}}</span>
             <span class="row text-center">{{unlock.ratio}}</span>
             <span class="row text-center">{{unlock.seuil}}</span>
           </div>

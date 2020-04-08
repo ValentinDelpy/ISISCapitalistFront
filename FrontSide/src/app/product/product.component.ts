@@ -85,10 +85,8 @@ export class ProductComponent implements OnInit {
       let now = Date.now();
       let elapseTime = now - this.lastupdate;
       this.lastupdate = now;
-
       // On vérifie l'évolution du temps
       this.product.timeleft = this.product.timeleft - elapseTime;
-
       // Lorsque la fabrication est terminée, deux choses :
       if (this.product.timeleft <= 0) {
         this.product.timeleft = 0;

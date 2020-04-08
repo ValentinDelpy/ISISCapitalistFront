@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>ISIS Communist</name>
     <logo>icones/background.png</logo>
-    <money>5</money>
+    <money>50000000</money>
     <score>0</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
@@ -20,7 +20,7 @@
             <vitesse>500</vitesse>
             <quantite>0</quantite>
             <timeleft>500</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
         <product>
@@ -33,7 +33,7 @@
             <vitesse>2500</vitesse>
             <quantite>0</quantite>
             <timeleft>2500</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
         <product>
@@ -46,7 +46,7 @@
             <vitesse>5000</vitesse>
             <quantite>0</quantite>
             <timeleft>5000</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
         <product>
@@ -59,7 +59,7 @@
             <vitesse>7500</vitesse>
             <quantite>0</quantite>
             <timeleft>7500</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
         <product>
@@ -72,7 +72,7 @@
             <vitesse>10000</vitesse>
             <quantite>0</quantite>
             <timeleft>10000</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
         <product>
@@ -85,7 +85,7 @@
             <vitesse>20000</vitesse>
             <quantite>0</quantite>
             <timeleft>20000</timeleft>
-            <managerUnlocked>0</managerUnlocked>
+            <managerUnlocked>false</managerUnlocked>
             <palliers></palliers>
         </product>
     </products>

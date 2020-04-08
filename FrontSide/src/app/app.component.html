@@ -86,29 +86,29 @@
   </div>
 </div>
 
-<app-modal #managersModal>
-  <div class="app-modal-header">
-    <h4 class="modal-title">Managers !</h4>
-  </div>
-  <div class="app-modal-body">
+  <app-modal #managersModal>
+    <div class="app-modal-header">
+      <h4 class="modal-title">Managers !</h4>
+    </div>
+    <div class="app-modal-body">
 
-    <div *ngFor="let manager of world.managers.pallier">
-      <div *ngIf="!manager.unlocked" class="row rounded notif">
-        <div class="col-md-4">
-          <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
-        </div>
-        <div class="col-md-5">
-          <h3><span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span></h3>
-          <span class="row text-center text-secondary">{{manager.description}}</span>
-          <h3><span class="row text-center text-secondary">{{manager.seuil}}</span></h3>
-        </div>
-        <div class="col-md-3">
-          <button class="btn btn-danger btn-lg mt-5"
-                  [disabled]="world.money < manager.seuil" (click)="achatManager(manager)"> Hire!</button>
+      <div *ngFor="let manager of world.managers.pallier">
+        <div *ngIf="!manager.unlocked" class="row rounded notif">
+          <div class="col-md-4">
+            <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
+          </div>
+          <div class="col-md-5">
+            <h3><span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span></h3>
+            <span class="row text-center text-secondary">{{manager.description}}</span>
+            <h3><span class="row text-center text-secondary">{{manager.seuil}}</span></h3>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-danger btn-lg mt-5"
+              [disabled]="world.money < manager.seuil" (click)="achatManager(manager)"> Hire!</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <div class="app-modal-footer">
     <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
   </div>

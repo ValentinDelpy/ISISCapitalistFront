@@ -94,16 +94,36 @@ export class ProductComponent implements OnInit, AfterViewInit {
   }
 
   calcScore() {
-    if (this.isRun) {
-      if (this.product.timeleft > (Date.now() - this.lastupdate)) {
-        this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
-      } else {
+
+    // si le produit n'est pas en production mais que le manager est débloqué, on le lance
+    if (this.product.managerUnlocked) {
+      this.startFabrication();
+      this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
+    }
+    // on ne fait rien si le produit n'est pas en production
+    else if (this.product.timeleft > 0) {
+      let now = Date.now();
+      let elapseTime = now - this.lastupdate;
+      this.lastupdate = now;
+      // on décrémente le temps du temps écoulé
+      this.product.timeleft = this.product.timeleft - elapseTime;
+
+      // si le temps de production du produit est écoulé...
+      if (this.product.timeleft <= 0) {
         this.product.timeleft = 0;
         this.lastupdate = 0;
         this.isRun = false;
         this.bar.set(0);
+        this.notifyProduction.emit(this.product);
+        // on prévient le composant parent que ce produit a été généré.
+        this.notifyProduction.emit(this.product);
+        // et on relance si jamais le manager est débloqué
+        if (this.product.managerUnlocked) {
+          this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
+          console.log(this.product.managerUnlocked);
+
+        }
       }
-      this.notifyProduction.emit(this.product);
     }
   }
 

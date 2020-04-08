@@ -104,7 +104,7 @@
           </div>
           <div class="col-md-3">
             <button class="btn btn-danger btn-lg mt-5" 
-              [disabled]="world.money < manager.seuil" (click)="showSuccess(manager.name + ' engagé')"> Hire!</button>
+              [disabled]="world.money < manager.seuil" (click)="achatManager(manager)"> Hire!</button>
           </div>
         </div>
       </div>

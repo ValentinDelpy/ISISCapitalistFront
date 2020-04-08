@@ -59,5 +59,20 @@ export class AppComponent {
         this.qtmulti = 1;
     }
   }
+
+  achatManager(manager: Pallier) {
+    this.showSuccess(manager.name + ' engagé');
+    if (this.world.money >= manager.seuil) {
+      this.world.money = this.world.money - manager.seuil;
+
+      this.world.managers.pallier[this.world.managers.pallier.indexOf(manager)].unlocked = true;
+      this.world.products.product.forEach(element => {
+        if (manager.idcible == element.id) {
+          this.world.products.product[this.world.products.product.indexOf(element)].managerUnlocked = true;
+        }
+      });
+      //this.service.putManager(m);
+    }
+  }
 }
 

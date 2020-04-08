@@ -3,20 +3,17 @@
 <div class="col-sm-4">
   <div class="card text-center">
     <div class="image">
-      <img [attr.src]="'http://localhost:8080/'+product.logo" (click)="production()" alt="...">
+      <img [attr.src]="'http://localhost:8080/'+product.logo" (click)="startFabrication()" alt="...">
     </div>
     <div class="card-inner">
       <div class="header">
-        <div class="progress" #bar> </div>
+        <div style="height: 35px; width: 100%; color: yellow;" class="txt progress" #bar>
+        </div>
         <h2>{{product.name}}</h2>
         <h3> Coût : {{product.cout}}</h3>
-        <h5 class="card-text" [innerHTML]="product.revenu*product.quantite | bigvalue"></h5>
       </div>
       <div class="content">
-        <p class="card-text"><small class="text-muted"><button href="#" class="btn" (click)="achatProduct()">
-          Acheter: <span id="productcout" class="badge badge-secondary" [innerHTML]="product.cout | bigvalue"></span>
-          <span class="badge badge-secondary">x{{_qtmulti}}</span>
-        </button></small></p>
+        <p class="card-text"><small class="text-muted"><button [disabled]="_qtmulti >  calcMaxCanBuy()" class="btn" (click)="achatProduct()">Acheter</button></small></p>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 
 export class World {
-    private _name: string; 
+    private _name: string;
     public get name(): string {
         return this._name;
     }
@@ -14,14 +14,14 @@ export class World {
     public set logo(value: string) {
         this._logo = value;
     }
-    private _money: number; 
+    private _money: number;
     public get money(): number {
         return this._money;
     }
     public set money(value: number) {
         this._money = value;
     }
-    private _score: number; 
+    private _score: number;
     public get score(): number {
         return this._score;
     }
@@ -49,7 +49,7 @@ export class World {
     public set angelbonus(value: number) {
         this._angelbonus = value;
     }
-    private _lastupdate: string; 
+    private _lastupdate: string;
     public get lastupdate(): string {
         return this._lastupdate;
     }
@@ -112,7 +112,7 @@ export class World {
         "pallier": Pallier[];
     };
     public get managers(): {
-        "pallier": Pallier[];
+        'pallier': Pallier[];
     } {
         return this._managers;
     }
@@ -148,6 +148,7 @@ export class Product {
 
 export class Pallier {
     name: string;
+    description: string;
     logo: string;
     seuil: number;
     idcible: number;

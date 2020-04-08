@@ -8,207 +8,192 @@
 
 <head>
   <meta charset="utf-8">
+  <script src="https://kit.fontawesome.com/51f96b75a0.js" crossorigin="anonymous"></script>
+  <link
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+    rel="stylesheet"  type='text/css'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="">
 </head>
 
 <body>
-  <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-red border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4" /> </div>
+<div class="d-flex" id="wrapper">
 
-      <div class="list-group list-group-flush">
-        <div class="row"><button type="button" id="unlock" class="btn btn-success"data-toggle="modal" (click)="unlockModal.show()">Unlock</button></div>
-        <div class="row"><button type="button" id="cash" class="btn btn-success"data-toggle="modal" (click)="upgradeModal.show()"><span
-          *ngIf="upgradeAvailable" class="badge text-warning">New</span>Cash upgrades</button></div>
-        <div class="row"><button type="button" id="angel" class="btn btn-success"data-toggle="modal" (click)="angelModal.show()">Angel Upgrades</button></div>
-        <div class="row"><button type="button" id="manager" class="btn btn-success"data-toggle="modal" (click)="managersModal.show()"><span
-          *ngIf="managerAvailable" class="badge text-warning">New</span>Managers</button></div>
-        <div class="row"><button type="button" id="investor" class="btn btn-success" (click)="investorsModal.show()">Investors</button></div></div>
+  <!-- Sidebar -->
+  <div class="bg-red border-right" id="sidebar-wrapper">
+    <div class="sidebar-heading"><img [attr.src]="server+world.logo" class="round mx-auto d-block mt-4"  alt=""/> </div>
 
+    <div class="list-group list-group-flush">
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-5 bg-yellow text-center text-dark rounded">
+        <h4>Career</h4>
+      </a>
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="unlockModal.show()">
+        <h4>Unlocks</h4>
+      </a>
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="upgradModal.show()">
+        <h4>Upgrades</h4>
+      </a>
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="managersModal.show()">
+        <h4>Managers</h4>
+      </a>
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="angelModal.show()">
+        <h4>Investors</h4>
+      </a>
+      <a href="#"
+         class="list-group-item list-group-item-action py-4 mb-0 mt-1 bg-yellow text-center text-dark rounded" data-toggle="modal"(click)="showSuccess('test réussi')">
+        <h4>test</h4>
+      </a>
+    </div>
+  </div>
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark rounded-0 px-0 mx-0">
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link clrgrd text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
+              class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item active">
+
+            <a class="nav-link display-4 mx-5" ><i class="fa fa-cog fa-spin ml-3 mr-5"></i> <span style="color: whitesmoke;" [innerHTML]="  world.money | bigvalue"> </span><i class="fa fa-cog fa-spin ml-5"></i></a>
+          </li>
+        </ul>
       </div>
-    </div>
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
+      <button class="btn btn-info mx-5 btn-lg" id="menu-toggle">Buy x1</button>
+    </nav>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark rounded-0 px-0 mx-0">
-
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
-                  class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link display-4 mx-5" href="#">Money: <span [innerHTML]="world.money | bigvalue"> </span></a>
-            </li>
-          </ul>
-        </div>
-        <button style="height: 100px; width: 155px; font-size: 20px;" *ngIf="qtmulti!=100000" class="btn btn-success"
-                (click)="commutateur()">
-          <span>Acheter</span><br />
-          <span>x{{qtmulti}}</span>
-        </button>
-        <button style="height: 100px; width: 155px; font-size: 20px;" *ngIf="qtmulti==100000" class="btn btn-success"
-                (click)="commutateur()">
-          <span>Acheter</span><br />
-          <span>Max</span>
-        </button>
-      </nav>
-
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          <div class="col-md-10">
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[0]"
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <div *ngFor="let product of world.products.product">
+            <app-product [money]="this.world.money" [qtmulti]="qtmulti" [prod]="product" (notifyMoney)="onBuyDone($event)" (notifyProduction)="onProductionDone($event)"
                          class="product col-lg-4 col-sm-6"></app-product>
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[1]"
-                         class="product col-lg-4 col-sm-6"></app-product>
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[2]"
-                         class="product col-lg-4 col-sm-6"></app-product>
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[3]"
-                         class="product col-lg-4 col-sm-6"></app-product>
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[4]"
-                         class="product col-lg-4 col-sm-6"></app-product>
-            <app-product (notifyProduction)="onProductionDone($event)" (notifyMoney)="onAchatDone($event)"
-                         [money]="world.money" [qtmulti]="qtmulti" [prod]="world.products.product[5]"
-                         class="product col-lg-4 col-sm-6"></app-product>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  <app-modal #investorsModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">Angels Investors</h4>
-    </div>
-    <div class="app-modal-body" id="corps">
-      <div class="row">
-        <div class="col-md-6">
-          <span>Total d'anges :&nbsp;</span><span [innerHTML]="world.totalangels | bigvalue"></span><br/>
-          <span>Bonus par anges :&nbsp;{{world.angelbonus}} %</span>
-        </div>
-        <button style="line-height: 50px;" class="txt col-md-6 btn btn-lg btn-primary">
-          <span [innerHTML]="world.activeangels | bigvalue"></span><span> anges à récupérer en redémarrant votre monde.</span><br/>
-        </button>
-      </div>
-    </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-danger" (click)="investorsModal.hide()">Close</button>
-    </div>
-  </app-modal>
-
-  <app-modal #managersModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">Managers</h4>
-    </div>
-    <div class="app-modal-body" id="corps">
-      <div *ngFor="let manager of world.managers.pallier">
-        <div *ngIf="!manager.unlocked" class="row rounded notif border-bottom">
-          <div class="col-md-4">
-            <span><img id="logo" [attr.src]="server+manager.logo"class="rounded-circle round"></span>
-          </div>
-          <div class="col-md-5">
-            <span class="txt row text-center font-weight-bold">{{manager.name}}</span>
-            <span class="row text-center"></span>
-            <span class="row text-center">{{manager.seuil}}</span>
-          </div>
-          <div class="col-md-3">
-            <button style="height: 100px; width: 100px;" class="btn btn-primary" (click)="achatManager(manager)"
-                    [disabled]="world.money < manager.seuil">Embaucher</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Fermer</button>
-    </div>
-  </app-modal>
+  </div>
+</div>
 
-  <app-modal #angelModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">Angels</h4>
-    </div>
-    <div class="app-modal-body" id="corps">
-      <div *ngFor="let angel of world.angelupgrades.pallier" class="row rounded notif border-bottom">
+<app-modal #managersModal>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Managers !</h4>
+  </div>
+  <div class="app-modal-body">
+
+    <div *ngFor="let manager of world.managers.pallier">
+      <div *ngIf="!manager.unlocked" class="row rounded notif">
         <div class="col-md-4">
-          <span><img id="logo" [attr.src]="server+angel.logo"class="rounded-circle round"></span>
+          <span><img [attr.src]="server+manager.logo" class="rounded-circle round"/> </span>
         </div>
         <div class="col-md-5">
-          <span class="txt row text-center font-weight-bold">{{angel.name}}</span>
+          <h3><span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{manager.name}}</span></h3>
+          <span class="row text-center text-secondary">{{manager.description}}</span>
+          <h3><span class="row text-center text-secondary">{{manager.seuil}}</span></h3>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-danger btn-lg mt-5"
+                  [disabled]="world.money < manager.seuil" (click)="achatManager(manager)"> Hire!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="managersModal.hide()">Close</button>
+  </div>
+</app-modal>
+
+<app-modal #upgradModal>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Upgrades !</h4>
+  </div>
+  <div class="app-modal-body">
+    <div *ngFor="let upgrade of world.upgrades.pallier">
+      <div *ngIf="!upgrade.unlocked" class="row rounded notif">
+        <div class="col-md-4">
+          <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
+        </div>
+        <div class="col-md-5">
+          <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}}</span></h3>
+          <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.description}}</span>
+          <span class="row text-center">{{upgrade.typeratio}}</span>
+          <span class="row text-center">{{upgrade.seuil}}</span>
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-danger btn-lg mt-5"
+                  [disabled]="world.money < upgrade.seuil">Buy!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="upgradModal.hide()">Close</button>
+  </div>
+</app-modal>
+
+<app-modal #unlockModal>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Upgrades !</h4>
+  </div>
+  <div class="app-modal-body">
+    <div *ngFor="let unlock of world.allunlocks.pallier">
+      <div *ngIf="!unlock.unlocked" class="row rounded notif">
+        <div class="col-md-4">
+          <span><img [attr.src]="server+unlock.logo" class="rounded-circle round" /> </span>
+        </div>
+        <div class="col-md-5">
+          <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{unlock.name}}</span></h3>
+          <span class="row text-center text-secondary">{{unlock.description}}</span>
+          <span class="row text-center">{{unlock.ratio}}</span>
+          <span class="row text-center">{{unlock.seuil}}</span>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="unlockModal.hide()">Close</button>
+  </div>
+</app-modal>
+
+<app-modal #angelModal>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Angels !</h4>
+  </div>
+  <div class="app-modal-body">
+    <div *ngFor="let angel of world.angelupgrades.pallier">
+      <div *ngIf="!angel.unlocked" class="row rounded notif">
+        <div class="col-md-4">
+          <span><img [attr.src]="server+angel.logo" class="rounded-circle round"/> </span>
+        </div>
+        <div class="col-md-5">
+          <span class="txt2 row text-center font-weight-bold">{{angel.name}}</span>
           <span class="row text-center">{{angel.typeratio}}</span>
           <span class="row text-center">{{angel.seuil}}</span>
         </div>
         <div class="col-md-3">
-          <button style="height: 100px; width: 100px;" class="btn btn-primary">Acheter</button>
+          <button [disabled]="world.activeangels <  angel.seuil"
+                  class="btn btn-danger btn-lg mt-5">Buy!</button>
         </div>
       </div>
     </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-danger" (click)="angelModal.hide()">Fermer</button>
-    </div>
-  </app-modal>
-
-  <app-modal #upgradeModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">Cash Upgrades</h4>
-    </div>
-    <div class="app-modal-body" id="corps">
-      <div *ngFor="let upgrade of world.upgrades.pallier">
-        <div *ngIf="!upgrade.unlocked" class="row rounded notif border-bottom">
-          <div class="col-md-4">
-            <span><img id="logo" [attr.src]="server+upgrade.logo"class="rounded-circle round"></span>
-          </div>
-          <div class="col-md-5">
-            <span class="txt row text-center font-weight-bold">{{upgrade.name}}</span>
-            <span class="row text-center">{{upgrade.typeratio}}</span>
-            <span class="row text-center">{{upgrade.seuil}}</span>
-          </div>
-          <div class="col-md-3">
-            <button style="height: 100px; width: 100px;" class="btn btn-primary" (click)="achatUpgrade(upgrade)"
-                    [disabled]="world.money < upgrade.seuil">Acheter</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-danger" (click)="upgradeModal.hide()">Fermer</button>
-    </div>
-  </app-modal>
-
-  <app-modal #unlockModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">unlocks !</h4>
-    </div>
-    <div class="app-modal-body" id="corps">
-      <div *ngFor="let unlock of world.allunlocks.pallier">
-        <div *ngIf="!unlock.unlocked" class="row rounded notif border-bottom">
-          <div class="col-md-4">
-            <span><img id="logo" [attr.src]="server+unlock.logo"class="rounded-circle round"></span>
-          </div>
-          <div class="col-md-8">
-            <span class="txt row text-center font-weight-bold">{{unlock.name}}</span>
-            <span class="row text-center">{{unlock.typeratio}}</span>
-            <span class="row text-center">{{unlock.seuil}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="app-modal-footer">
-      <button type="button" class="btn btn-danger" (click)="unlockModal.hide()">Fermer</button>
-    </div>
-  </app-modal>
-  <script src="" async defer></script>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-danger" (click)="angelModal.hide()">Close</button>
+  </div>
+</app-modal>
 </body>
 
 </html>

@@ -82,6 +82,8 @@
         <xs:sequence>
             <!-- identifiant du pallier -->
             <xs:element name="name" type="xs:string"/>
+            <!-- description de l'upgrade -->
+            <xs:element name="description" type="xs:string"/>
             <!-- chemin relatif menant à une image représentative du pallier -->
             <xs:element name="logo" type="xs:string"/> 
             <!-- valeur du pallier à atteindre quand il s'agit d'un seuil, ou coût de l'upgrade sinon -->

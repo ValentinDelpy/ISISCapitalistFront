@@ -9,8 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { RestserviceService } from './restservice.service';
 import { BigvaluePipe } from './bigvalue.pipe';
 import { ModalComponent } from './modal/modal.component';
-import {NotificationService} from './notification.service';
-import { TimerPipe } from './timer.pipe';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 // @ts-ignore
 @NgModule({
@@ -18,18 +19,17 @@ import { TimerPipe } from './timer.pipe';
     AppComponent,
     ProductComponent,
     BigvaluePipe,
-    ModalComponent,
-    TimerPipe
+    ModalComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressBarModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
-  providers: [
-    RestserviceService,
-    NotificationService
-  ],
+  providers: [RestserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

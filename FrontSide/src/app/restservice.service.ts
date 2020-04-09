@@ -8,7 +8,14 @@ import { World, Pallier, Product} from './world';
 export class RestserviceService {
   constructor(private http: HttpClient) {}
   server = 'http://localhost:8080/';
-  user = '';
+  private _user = '';
+
+  public getUser() {
+    return this._user;
+  }
+  public setUser(value) {
+    this._user = value;
+  }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Product} from '../world';
 import {ThemePalette} from '@angular/material/core';
-import {ProgressBarMode} from '@angular/material/progress-bar';
+import { Pallier } from '../world';
 
 declare var require;
 const ProgressBar = require('progressbar.js');
@@ -155,5 +155,16 @@ export class ProductComponent implements OnInit, AfterViewInit {
       }
     }
     return quantiteMax;
+  }
+
+  calcUpgrade(upgrade: Pallier) {
+    switch (upgrade.typeratio) {
+      case 'VITESSE':
+        this.product.vitesse = this.product.vitesse / upgrade.ratio;
+        break;
+      case 'GAIN':
+        this.product.revenu = this.product.revenu * upgrade.ratio;
+        break;
+    }
   }
 }

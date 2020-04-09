@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { RestserviceService } from './restservice.service';
 import { World, Product, Pallier } from './world';
 import { ToastrService } from 'ngx-toastr';
+import { ProductComponent } from './product/product.component'
 
 
 @Component({
@@ -10,13 +11,16 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChildren(ProductComponent) public produits: QueryList<ProductComponent>;
   title = 'ISISCapitalist';
   world: World = new World();
   server: string;
+  username: string = '';
   qtmulti = 1;
   nbManagerDebloquables = 0;
 
   constructor(private service: RestserviceService, private toastr: ToastrService) {
+    this.newUserName();
     this.server = service.getServer();
     service.getWorld().then(
 
@@ -78,6 +82,28 @@ export class AppComponent {
     }
   }
 
+  achatUpgrade(upgrade: Pallier) {
+    
+    if (this.world.money >= upgrade.seuil) {
+      this.world.money = this.world.money - upgrade.seuil;
+      this.world.upgrades.pallier[this.world.upgrades.pallier.indexOf(upgrade)].unlocked = true;
+      if (upgrade.idcible == 6) {
+        this.produits.forEach(produit => produit.calcUpgrade(upgrade));
+        this.showSuccess('Tu as tout acheté');
+      }
+      else {
+        this.produits.forEach(produit => {
+          if (upgrade.idcible == produit.product.id) {
+            produit.calcUpgrade(upgrade);
+            this.showSuccess(upgrade.name + ' acheté');
+          }
+        })
+      }
+      //this.service.putUpgrade(p);
+      
+    }
+  }
+
   disponibiliteManager(): void {
     let nb = 0;
     this.nbManagerDebloquables = 0;
@@ -88,5 +114,16 @@ export class AppComponent {
     })
     this.nbManagerDebloquables=nb;
   }
+
+  newUserName():void{
+    this.username = localStorage.getItem("username");
+      this.username = 'Comrade' + Math.floor(Math.random() * 10000);
+      localStorage.setItem("username", this.username);
+     }
+
+    onUsernameChanged(): void {
+      localStorage.setItem("username", this.username);
+      this.service.setUser(this.username);
+    }
 }
 

@@ -83,6 +83,11 @@
         <span>Buy</span><br />
         <span>Max</span>
       </button>
+      <div class="mx-5">
+        <span class="row">Comrade ID : </span>
+        <input type="text" class="row border border-info rounded text-secondary"
+          [(ngModel)]="username" (change)="onUsernameChanged()" />
+      </div>
       </nav>
 
       <div class="container-fluid">
@@ -137,14 +142,14 @@
             <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
           </div>
           <div class="col-md-5">
-           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.name}}</span></h3>
-            <span class="txt2 row text-center font-weight-bold text-secondary mt-5">{{upgrade.description}}</span>
+           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-3">{{upgrade.name}}</span></h3>
+            <span class="txt2 row text-center font-weight-bold text-secondary">{{upgrade.description}}</span>
             <span class="row text-center">{{upgrade.typeratio}}</span>
-            <span class="row text-center">{{upgrade.seuil}}</span>
+           <h4><span class="row text-center font-weight-bold text-secondary">{{upgrade.seuil}}</span></h4>
           </div>
           <div class="col-md-3">
             <button class="btn btn-danger btn-lg mt-5" 
-              [disabled]="world.money < upgrade.seuil">Buy!</button>
+              [disabled]="world.money < upgrade.seuil" (click)="achatUpgrade(upgrade)">Buy!</button>
           </div>
         </div>
       </div>

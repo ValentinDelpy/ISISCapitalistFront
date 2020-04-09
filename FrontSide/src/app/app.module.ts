@@ -13,6 +13,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatBadgeModule} from '@angular/material/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule } from '@angular/forms';
 
 // @ts-ignore
 @NgModule({
@@ -29,7 +30,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatProgressBarModule,
     MatBadgeModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot() // ToastrModule added
+    ToastrModule.forRoot(), // ToastrModule added
+    FormsModule
   ],
   providers: [RestserviceService],
   bootstrap: [AppComponent]

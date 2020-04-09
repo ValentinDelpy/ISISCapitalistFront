@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>ISIS Communist</name>
     <logo>icones/background.png</logo>
-    <money>50000000</money>
+    <money>100000</money>
     <score>0</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>

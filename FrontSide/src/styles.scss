@@ -1,3 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~ngx-toastr/toastr.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@include mat-progress-bar-theme($app-theme);
 round{width: 100px;height: 100px;border-radius: 50%}

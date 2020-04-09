@@ -14,6 +14,7 @@ export class AppComponent {
   world: World = new World();
   server: string;
   qtmulti = 1;
+  nbManagerDebloquables = 0;
 
   constructor(private service: RestserviceService, private toastr: ToastrService) {
     this.server = service.getServer();
@@ -38,9 +39,10 @@ export class AppComponent {
     this.world.money = this.world.money - m;
   }
 
-  onProductionDone(p: Product) {
+  onProductionDone(p: Product) {  
     this.world.money = this.world.money + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
     this.world.score = this.world.score + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
+    this.disponibiliteManager();
   }
   // Commutateur pour la valeur de quantité d'achat de produits.
   // Le max étant ici, par souci de simplicité, représenté par une grande valeur;
@@ -71,8 +73,20 @@ export class AppComponent {
           this.world.products.product[this.world.products.product.indexOf(element)].managerUnlocked = true;
         }
       });
+      
       //this.service.putManager(m);
     }
+  }
+
+  disponibiliteManager(): void {
+    let nb = 0;
+    this.nbManagerDebloquables = 0;
+    this.world.managers.pallier.forEach(val => {
+        if (this.world.money > val.seuil && !val.unlocked) {
+          nb++;
+        }
+    })
+    this.nbManagerDebloquables=nb;
   }
 }
 

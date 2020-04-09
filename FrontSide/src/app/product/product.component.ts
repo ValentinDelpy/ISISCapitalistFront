@@ -85,8 +85,11 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   }
   startFabrication() {
-    this.product.timeleft = this.product.vitesse;
-    this.lastupdate = Date.now();
+    if (this.product.quantite>0){
+      this.product.timeleft = this.product.vitesse;
+      this.lastupdate = Date.now();
+    }
+    
   }
 
   calcScore() {

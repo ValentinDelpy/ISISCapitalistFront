@@ -51,6 +51,7 @@ public class Services {
     }
 
     void saveWorldToXml(World world, String pseudo) throws FileNotFoundException, JAXBException {
+        System.out.println("fichier créé");
         OutputStream output = new FileOutputStream(pseudo + "world.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(World.class);
         Marshaller m = jaxbContext.createMarshaller();
@@ -174,6 +175,7 @@ public class Services {
     // prend en paramètre le pseudo du joueur et le manager acheté.
 // renvoie false si l’action n’a pas pu être traitée
     public Boolean updateManager(String username, PallierType newmanager) throws FileNotFoundException, JAXBException {
+        System.out.println(username);
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, le manager équivalent à celui passé

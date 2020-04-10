@@ -78,7 +78,7 @@ export class AppComponent {
         }
       });
       
-      //this.service.putManager(m);
+      this.service.putManager(manager);
     }
   }
 
@@ -117,8 +117,9 @@ export class AppComponent {
 
   newUserName():void{
     this.username = localStorage.getItem("username");
-      this.username = 'Comrade' + Math.floor(Math.random() * 10000);
-      localStorage.setItem("username", this.username);
+    this.username = 'Comrade' + Math.floor(Math.random() * 10000);
+    localStorage.setItem("username", this.username);
+    this.service.setUser(this.username);
      }
 
     onUsernameChanged(): void {

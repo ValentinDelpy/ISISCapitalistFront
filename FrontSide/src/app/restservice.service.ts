@@ -9,6 +9,7 @@ export class RestserviceService {
   constructor(private http: HttpClient) {}
   server = 'http://localhost:8080/';
   private _user = '';
+  
 
   public getUser() {
     return this._user;
@@ -23,7 +24,7 @@ export class RestserviceService {
   }
   
   getWorld(): Promise<World> {
-    return this.http.get(this.server + 'adventureisis/api/world')
+    return this.http.get(this.server + 'adventureisis/api/world',{headers:this.setHeaders(this._user)})
       .toPromise().catch(this.handleError);
   }
   /*getWorld(): Promise<World> {
@@ -47,4 +48,16 @@ export class RestserviceService {
     var headers = new HttpHeaders({ 'X-User': user});
     return headers;
   };
+
+
+  public putManager(manager: Pallier): Promise<Response> {
+    // console.log(upgrade);
+     return this.http
+       .put(this.server + "adventureisis/api/manager", manager, {
+         headers: { "X-user": this.getUser() }
+       })
+       .toPromise()
+       .then(response => response)
+       .catch(this.handleError);
+   }
 }

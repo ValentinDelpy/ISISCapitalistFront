@@ -12,6 +12,7 @@ import generated.World;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
@@ -62,14 +63,15 @@ public class Webservice {
         services.updateProduct(username, product);
     }
 
-    @PUT
+     @PUT
     @Path("manager")
     @Consumes({MediaType.APPLICATION_JSON})
-    public void editManager(@FormParam("data")String data, @FormParam("username")String username) throws FileNotFoundException, JAXBException {
+    public Response editManager(String data) throws JAXBException, FileNotFoundException{
+        System.out.println("------------------------------------ data +"+data);
         PallierType manager = new Gson().fromJson(data, PallierType.class);
-        services.updateManager(username, manager);
-
+        return Response.ok(services.updateManager(data, manager)).build();
     }
+    
     
     @PUT
     @Path("upgrade")

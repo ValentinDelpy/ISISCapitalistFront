@@ -85,9 +85,12 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   }
   startFabrication() {
+    console.log(this.progressbarvalue);
     if (this.product.quantite>0){
+      if (Number.isNaN(this.progressbarvalue) || this.progressbarvalue==0 ){
       this.product.timeleft = this.product.vitesse;
       this.lastupdate = Date.now();
+    }
     }
     
   }

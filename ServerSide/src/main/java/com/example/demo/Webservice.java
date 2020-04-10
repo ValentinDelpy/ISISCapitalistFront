@@ -7,7 +7,9 @@ import generated.World;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -34,54 +36,81 @@ import org.springframework.stereotype.Controller;
 @Controller
 @Path("/api")
 public class Webservice {
+
     Services services;
+    static ArrayList<Long> mean = new ArrayList<>();
+
     public Webservice() {
         this.services = new Services();
     }
+
     @GET
     @Path("/world")
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Response getXml(@Context HttpServletRequest request) throws JAXBException {
+    public Response getXml(@Context HttpServletRequest request) throws JAXBException, IOException {
         String username = request.getHeader("X-user");
-        return Response.ok(services.readWorldFromXml(username)).build();
+        World w = services.getWorld(username);
+        services.saveWorldToXml(w, username);
+        return Response.ok(w).build();
     }
+
     @PUT
     @Path("/product")
     @Consumes({MediaType.APPLICATION_JSON})
-     public void editProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException, JAXBException {
+    public void putProduct(@Context HttpServletRequest request, ProductType product) throws FileNotFoundException, JAXBException, IOException {
+        long timer = System.currentTimeMillis();
         String username = request.getHeader("X-user");
         services.updateProduct(username, product);
+        long update = System.currentTimeMillis();
+
+        mean.add(update - timer);
+        if (mean.size() % 10 == 0) {
+            double sum = 0;
+            for (int i = 0; i < mean.size(); i++) {
+                sum = sum + mean.get(i);
+            }
+        }
     }
+
     @PUT
     @Path("/manager")
     @Consumes({MediaType.APPLICATION_JSON})
-     public void editManager(@Context HttpServletRequest request, PallierType manager) throws FileNotFoundException, JAXBException {
+    public void putManager(@Context HttpServletRequest request, PallierType manager) throws FileNotFoundException, JAXBException, IOException {
         String username = request.getHeader("X-user");
         services.updateManager(username, manager);
     }
+
     @PUT
     @Path("/upgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editUpgrade(@Context HttpServletRequest request, PallierType upgrade) throws JAXBException, FileNotFoundException{
+    public void putUpgrade(@Context HttpServletRequest request, PallierType upgrade) throws JAXBException, FileNotFoundException, IOException {
         String username = request.getHeader("X-user");
         services.updateUpgrade(username, upgrade);
     }
-   @PUT
-   @Path("/angelupgrade")
-   @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-   public void editAngelUpgrade(@Context HttpServletRequest request,PallierType ange) throws JAXBException, FileNotFoundException{
-    String username = request.getHeader("X-user");
-    services.updateUpgrade(username, ange);
-  }
+
+    @PUT
+    @Path("/angelupgrade")
+    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+    public void putAngelUpgrade(@Context HttpServletRequest request, PallierType ange) throws JAXBException, FileNotFoundException, IOException {
+        String username = request.getHeader("X-user");
+        services.updateUpgrade(username, ange);
+    }
+
+    @PUT
+    @Path("world")
+    public void putWorld(@Context HttpServletRequest request, World world) throws JAXBException, IOException {
+        String username = request.getHeader("X-user");
+        services.saveWorldToXml(world, username);
+    }
 
     @DELETE
     @Path("/world")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void resetWorld(String username) throws FileNotFoundException, JAXBException{
+    public void resetWorld(String username) throws FileNotFoundException, JAXBException, IOException {
         World w = services.readWorldFromXml(username);
         double scoreToKeep = w.getScore();
         double totalangels = w.getTotalangels();
-        double activeangels = 150 * Math.sqrt(w.getScore()/Math.pow(10, 15))-totalangels;   
+        double activeangels = 150 * Math.sqrt(w.getScore() / Math.pow(10, 15)) - totalangels;
         JAXBContext jaxbContext;
 
         InputStream input = getClass().getClassLoader().getResourceAsStream("world.xml");

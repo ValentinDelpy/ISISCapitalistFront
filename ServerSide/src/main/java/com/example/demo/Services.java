@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import javax.ws.rs.Produces;
@@ -39,37 +40,23 @@ public class Services {
         }
     }
     
-    void saveWorldToXml(World world, String pseudo) throws FileNotFoundException, JAXBException {
+    void saveWorldToXml(World world, String pseudo) throws FileNotFoundException, JAXBException, IOException {
         OutputStream output = new FileOutputStream(pseudo + "world.xml");
         JAXBContext jaxbContext = JAXBContext.newInstance(World.class);
         Marshaller m = jaxbContext.createMarshaller();
         m.marshal(world, output);
+        output.close();
     }
+    
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public World getWorld(String pseudo) throws JAXBException, FileNotFoundException {
+    public World getWorld(String pseudo) throws JAXBException, FileNotFoundException, IOException {
         World w = this.readWorldFromXml(pseudo);
-        for (ProductType pt : w.getProducts().getProduct()) {
-            if (!pt.isManagerUnlocked()) {
-                if (pt.getTimeleft() != 0) {
-                    if (pt.getTimeleft() < (System.currentTimeMillis() - w.getLastupdate())) {
-         w.setScore(w.getScore() + pt.getRevenu());
-                    } else {
-                        pt.setTimeleft(pt.getTimeleft() - (System.currentTimeMillis() - w.getLastupdate()));
-                    }
-                }
-            } else {
-                long time = System.currentTimeMillis() - w.getLastupdate();
-                long nb_prod = (time / pt.getVitesse());
-                long time_left = (time % pt.getVitesse());
-                pt.setTimeleft(time_left);
-            }
-        }
-        
         w.setLastupdate(System.currentTimeMillis());
         this.saveWorldToXml(w, pseudo);
-        return this.readWorldFromXml(pseudo);
+        return w;
     }
-    public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, JAXBException {
+    
+    public Boolean updateProduct(String username, ProductType newproduct) throws FileNotFoundException, JAXBException, IOException {
         World world = getWorld(username);
         ProductType product = findProductById(world, newproduct.getId());
         if (product == null) {
@@ -104,7 +91,7 @@ public class Services {
     }
 
 
-    public Boolean updateUpgrade(String username, PallierType upgrade) throws JAXBException, FileNotFoundException {
+    public Boolean updateUpgrade(String username, PallierType upgrade) throws JAXBException, FileNotFoundException, IOException {
         World w = getWorld(username);
         PallierType u = findUpgradeByName(w, upgrade.getName());
         ProductType product = findProductById(w, upgrade.getIdcible());
@@ -157,7 +144,7 @@ public class Services {
 
     // prend en paramètre le pseudo du joueur et le manager acheté.
 // renvoie false si l’action n’a pas pu être traitée
-    public Boolean updateManager(String username, PallierType newmanager) throws FileNotFoundException, JAXBException {
+    public Boolean updateManager(String username, PallierType newmanager) throws FileNotFoundException, JAXBException, IOException {
          // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, le manager équivalent à celui passé

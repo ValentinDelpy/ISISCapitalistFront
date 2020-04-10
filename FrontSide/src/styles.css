@@ -1,7 +1,4 @@
 @import '~ngx-toastr/toastr.css';
-<<<<<<< HEAD
-.round{width: 100px;height: 100px;border-radius: 50%}
-=======
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 .round{width: 100px;height: 100px;border-radius: 50%}
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e

@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList } from '@angular/core';
+import {Component, ViewChildren, QueryList, OnInit} from '@angular/core';
 import { RestserviceService } from './restservice.service';
 import { World, Product, Pallier } from './world';
 import { ToastrService } from 'ngx-toastr';
@@ -10,7 +10,7 @@ import { ProductComponent } from './product/product.component'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   @ViewChildren(ProductComponent) public produits: QueryList<ProductComponent>;
   title = 'ISISCapitalist';
   world: World = new World();
@@ -29,6 +29,10 @@ export class AppComponent {
       });
   }
 
+  ngOnInit(): void {
+    this.username = localStorage.getItem("username");
+  }
+
   showSuccess(message:string) {
     this.toastr.success(message, 'Aye comrade !',
       { timeOut: 2000 });;
@@ -43,7 +47,7 @@ export class AppComponent {
     this.world.money = this.world.money - m;
   }
 
-  onProductionDone(p: Product) {  
+  onProductionDone(p: Product) {
     this.world.money = this.world.money + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
     this.world.score = this.world.score + p.quantite * p.revenu * (1 + (this.world.activeangels * this.world.angelbonus / 100));
     this.disponibiliteManager();
@@ -77,13 +81,12 @@ export class AppComponent {
           this.world.products.product[this.world.products.product.indexOf(element)].managerUnlocked = true;
         }
       });
-      
-      //this.service.putManager(m);
+      this.service.putManager(manager);
     }
   }
 
   achatUpgrade(upgrade: Pallier) {
-    
+
     if (this.world.money >= upgrade.seuil) {
       this.world.money = this.world.money - upgrade.seuil;
       this.world.upgrades.pallier[this.world.upgrades.pallier.indexOf(upgrade)].unlocked = true;
@@ -99,8 +102,8 @@ export class AppComponent {
           }
         })
       }
-      //this.service.putUpgrade(p);
-      
+      this.service.putUpgrade(upgrade);
+
     }
   }
 

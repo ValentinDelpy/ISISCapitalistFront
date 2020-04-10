@@ -90,21 +90,6 @@
       </div>
       </nav>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link clrgrd text-light display-3" href="#"><span id="worldname">{{world.name}}</span><br /><span
-              class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item active">
-
-            <a class="nav-link display-4 mx-5" ><i class="fa fa-cog fa-spin ml-3 mr-5"></i> <span style="color: whitesmoke;" [innerHTML]="  world.money | bigvalue"> </span><i class="fa fa-cog fa-spin ml-5"></i></a>
-          </li>
-        </ul>
-      </div>
-      <button class="btn btn-info mx-5 btn-lg" id="menu-toggle">Buy x1</button>
-    </nav>
-
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-md-10">
@@ -146,7 +131,6 @@
   </div>
 </app-modal>
 
-<<<<<<< HEAD
 <app-modal #upgradModal>
   <div class="app-modal-header">
     <h4 class="modal-title">Upgrades !</h4>
@@ -166,28 +150,6 @@
         <div class="col-md-3">
           <button class="btn btn-danger btn-lg mt-5"
                   [disabled]="world.money < upgrade.seuil">Buy!</button>
-=======
-  <app-modal #upgradModal>
-    <div class="app-modal-header">
-      <h4 class="modal-title">Upgrades !</h4>
-    </div>
-    <div class="app-modal-body">
-      <div *ngFor="let upgrade of world.upgrades.pallier">
-        <div *ngIf="!upgrade.unlocked" class="row rounded notif">
-          <div class="col-md-4">
-            <span><img [attr.src]="server+upgrade.logo" class="rounded-circle round" /> </span>
-          </div>
-          <div class="col-md-5">
-           <h3> <span class="txt2 row text-center font-weight-bold text-secondary mt-3">{{upgrade.name}}</span></h3>
-            <span class="txt2 row text-center font-weight-bold text-secondary">{{upgrade.description}}</span>
-            <span class="row text-center">{{upgrade.typeratio}}</span>
-           <h4><span class="row text-center font-weight-bold text-secondary">{{upgrade.seuil}}</span></h4>
-          </div>
-          <div class="col-md-3">
-            <button class="btn btn-danger btn-lg mt-5"
-              [disabled]="world.money < upgrade.seuil" (click)="achatUpgrade(upgrade)">Buy!</button>
-          </div>
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
         </div>
       </div>
     </div>

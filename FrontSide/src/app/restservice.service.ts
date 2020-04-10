@@ -21,11 +21,66 @@ export class RestserviceService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
-  
+
   getWorld(): Promise<World> {
-    return this.http.get(this.server + 'adventureisis/api/world')
-      .toPromise().catch(this.handleError);
+    let headers = this.setHeaders(this.getUser());
+    return this.http.get(this.server + 'adventureisis/api/world', {
+      headers: headers
+    })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  };
+
+  putManager(manager: Pallier): Promise<Response> {
+    let headers = this.setHeaders(this.getUser());
+    return this.http
+      .put(this.server + 'adventureisis/api/manager', manager, {
+        headers: headers
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
   }
+
+  putUpgrade(upgrade: Pallier): Promise<Response> {
+    let headers = this.setHeaders(this.getUser());
+    return this.http
+      .put(this.server + 'adventureisis/api/upgrade', upgrade, {
+        headers: headers
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+
+  putAngel(angel: Pallier): Promise<Response> {
+    let headers = this.setHeaders(this.getUser());
+    return this.http
+      .put(this.server + 'adventureisis/api/angelupgrade', angel, {
+        headers: headers
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+
+  putProduit(product: Product): Promise<Response> {
+    let headers = this.setHeaders(this.getUser());
+    return this.http
+      .put(this.server + 'adventureisis/api/product', product, {
+        headers: headers
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+
+  deleteWorld(): Promise<Response> {
+    return this.http
+      .delete(this.server + "adventureisis/api/world", {
+        headers: this.setHeaders(this.getUser())
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
+
+
   /*getWorld(): Promise<World> {
     return this.http.get(this.server + "adventureisis/api/world", { headers:this.setHeaders(this._user)}).toPromise().catch(this.handleError);};*/
 

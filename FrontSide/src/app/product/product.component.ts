@@ -1,12 +1,7 @@
 import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Pallier, Product} from '../world';
 import {ThemePalette} from '@angular/material/core';
-<<<<<<< HEAD
-import {ProgressBarMode} from '@angular/material/progress-bar';
 import {NotificationService} from "../notification.service";
-=======
-import { Pallier } from '../world';
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
 
 declare var require;
 const ProgressBar = require('progressbar.js');
@@ -18,18 +13,13 @@ const ProgressBar = require('progressbar.js');
 })
 
 
-export class ProductComponent implements OnInit {
+export class ProductComponent  {
   product: Product;
   color: ThemePalette = 'primary';
   progressbarvalue: number = 0;
   isRun: boolean;
   lastupdate: number;
   maxAchat: number;
-<<<<<<< HEAD
-=======
-  progressbarvalue: number = 0;
-
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
   // tslint:disable-next-line:variable-name
   _money: number;
   @Input()
@@ -43,13 +33,9 @@ export class ProductComponent implements OnInit {
     this.maxAchat = this.product.cout;
     if (this.product.managerUnlocked && this.product.timeleft > 0) {
       this.lastupdate = Date.now();
-<<<<<<< HEAD
-      this.progressbarvalue = this.product.vitesse;
-=======
       //this.progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
       this.progressbarvalue = this.product.vitesse;
       //this.bar.animate(1, { duration: this.progress });
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
     }
   }
 
@@ -77,11 +63,6 @@ export class ProductComponent implements OnInit {
     }, 100);
   }
 
-<<<<<<< HEAD
-  startFabrication() {
-    if (this.product.quantite >= 1) {
-      const progress = (this.product.vitesse - this.product.timeleft) / this.product.vitesse;
-=======
   ngAfterViewInit() {
     setTimeout(() => {
       /*this.bar = new ProgressBar.Line(this.progressBarItem.nativeElement, {
@@ -102,26 +83,19 @@ export class ProductComponent implements OnInit {
   }
   startFabrication() {
     console.log(this.progressbarvalue);
-    if (this.product.quantite>0){
+    if (this.product.quantite>0){	    if (this.product.quantite>0){
       if (Number.isNaN(this.progressbarvalue) || this.progressbarvalue==0 ){
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
-      this.product.timeleft = this.product.vitesse;
-      this.lastupdate = Date.now();
+        this.product.timeleft = this.product.vitesse;	      this.product.timeleft = this.product.vitesse;
+        this.lastupdate = Date.now();	      this.lastupdate = Date.now();
+      }	    }
     }
-    }
-    
+
   }
 
   calcScore() {
-
-<<<<<<< HEAD
     //Lorsque l'on débloque le manager, le produit peut ne pas être en cours de fabrication
     //Il faut alors lancer la fabrication
-    if (this.product.managerUnlocked && this.product.timeleft === 0 ) {
-=======
-    // si le produit n'est pas en production mais que le manager est débloqué, on le lance
-    if (this.product.timeleft === 0 && this.product.managerUnlocked) {
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
+    if (this.product.managerUnlocked && this.product.timeleft === 0) {
       this.startFabrication();
     }
     //Lorsque le produit n'est pas en fabrication, rien ne se passe
@@ -134,7 +108,6 @@ export class ProductComponent implements OnInit {
       // Lorsque la fabrication est terminée, deux choses :
       if (this.product.timeleft <= 0) {
         this.product.timeleft = 0;
-<<<<<<< HEAD
         this.lastupdate = 0;
         this.isRun = false;
         // On réinitialise la progressbar
@@ -145,55 +118,43 @@ export class ProductComponent implements OnInit {
         if (this.product.managerUnlocked) {
           this.product.timeleft = this.product.timeleft - (Date.now() - this.lastupdate);
           this.startFabrication();
+        } else {
+          this.progressbarvalue = ((this.product.vitesse - this.product.timeleft) / this.product.vitesse) * 100
+          this.progressbarvalue = 0;
+          // on prévient le composant parent que ce produit a été généré.
+          this.notifyProduction.emit(this.product);
+          // et on relance si jamais le manager est débloqué
+          if (this.product.managerUnlocked) {
+            this.startFabrication();
+          }
         }
-        else {
-            this.progressbarvalue = ((this.product.vitesse - this.product.timeleft) / this.product.vitesse) * 100
-=======
-        this.progressbarvalue = 0;
-        // on prévient le composant parent que ce produit a été généré.
-        this.notifyProduction.emit(this.product);
-        // et on relance si jamais le manager est débloqué
-        if (this.product.managerUnlocked) {
-          this.startFabrication();
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
-        }
+        // on calcule le positionnement de la barre de progression en pourcentage
       }
-      // on calcule le positionnement de la barre de progression en pourcentage
-      else this.progressbarvalue = ((this.product.vitesse - this.product.timeleft) / this.product.vitesse) * 100
     }
+
   }
-
-
-  achatProduct() {
-    console.log(this.calcMaxCanBuy())
-    if (this._qtmulti <= this.calcMaxCanBuy()) {
-      let coutAchat = 0;
-      for (let i = 0; i < this._qtmulti; i++) {
-        this.maxAchat = this.maxAchat * this.product.croissance;
-        coutAchat = coutAchat + this.maxAchat;
-      }
-      this.notifyMoney.emit(coutAchat);
-      this.product.quantite = this.product.quantite + this._qtmulti;
-      // bonus d'achat spécifique à chaque produit
-<<<<<<< HEAD
-      this.product.palliers.pallier.forEach(value => {
-        if (!value.unlocked && this.product.quantite > value.seuil) {
-          this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
-          this.calcUpgrade(value);
-          this.notifyService.showSuccess("déblocage d'un bonus " + value.typeratio + " effectué pour " + this.product.name, "BONUS")
+    achatProduct(){
+      console.log(this.calcMaxCanBuy())
+      if (this._qtmulti <= this.calcMaxCanBuy()) {
+        let coutAchat = 0;
+        for (let i = 0; i < this._qtmulti; i++) {
+          this.maxAchat = this.maxAchat * this.product.croissance;
+          coutAchat = coutAchat + this.maxAchat;
         }
-      });
-=======
-      //this.product.palliers.pallier.forEach(value => {
+        this.notifyMoney.emit(coutAchat);
+        this.product.quantite = this.product.quantite + this._qtmulti;
+        // bonus d'achat spécifique à chaque produit
+        //this.product.palliers.pallier.forEach(value => {
         //if (!value.unlocked && this.product.quantite > value.seuil) {
-          //this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
-         // this.calcUpgrade(value);
-         // this.notifyService.showSuccess("déblocage d'un bonus " + value.typeratio + " effectué pour " + this.product.name, "BONUS")
+        //this.product.palliers.pallier[this.product.palliers.pallier.indexOf(value)].unlocked = true;
+        // this.calcUpgrade(value);
+        // this.notifyService.showSuccess("déblocage d'un bonus " + value.typeratio + " effectué pour " + this.product.name, "BONUS")
         //}
-     // });
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
+        // });
+
+      }
     }
-  }
+
 
   calcMaxCanBuy(): number {
     let quantiteMax = 0;
@@ -208,7 +169,6 @@ export class ProductComponent implements OnInit {
     return quantiteMax;
   }
 
-<<<<<<< HEAD
   calcUpgrade(pallier: Pallier) {
     switch (pallier.typeratio) {
       case 'vitesse':
@@ -216,15 +176,6 @@ export class ProductComponent implements OnInit {
         break;
       case 'gain':
         this.product.revenu = this.product.revenu * pallier.ratio;
-=======
-  calcUpgrade(upgrade: Pallier) {
-    switch (upgrade.typeratio) {
-      case 'VITESSE':
-        this.product.vitesse = this.product.vitesse / upgrade.ratio;
-        break;
-      case 'GAIN':
-        this.product.revenu = this.product.revenu * upgrade.ratio;
->>>>>>> a53e2a0ab7f9d611ddc6d99d411312039a3a078e
         break;
     }
   }

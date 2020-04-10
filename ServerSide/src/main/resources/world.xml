@@ -3,7 +3,7 @@
     xsi:noNamespaceSchemaLocation='jaxb/WorldSchema/SchemaWorld.xml.xsd'>
     <name>ISIS Communist</name>
     <logo>icones/background.png</logo>
-    <money>50000000</money>
+    <money>250004</money>
     <score>0</score>
     <totalangels>0</totalangels>
     <activeangels>0</activeangels>
@@ -164,7 +164,7 @@
         </pallier>
         <pallier>
             <name>Distilerie</name>
-            <description>x3 production de pommes de terre</description>
+            <description>x3 production de vodka</description>
             <logo>icones/distillery.jpg</logo>
             <seuil>500000</seuil>
             <idcible>2</idcible>
@@ -174,40 +174,40 @@
         </pallier>
         <pallier>
             <name>Usine à chapka</name>
-            <description>x3 production de pommes de terre</description>
+            <description>x3 production de chapkas</description>
             <logo>icones/chapka_usine.jpg</logo>
             <seuil>1000000</seuil>
-            <idcible>1</idcible>
+            <idcible>3</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
             <name>Camp</name>
-            <description>x3 production de pommes de terre</description>
+            <description>x3 entraînement de Dimitris</description>
             <logo>icones/camp.jpg</logo>
             <seuil>5000000</seuil>
-            <idcible>2</idcible>
+            <idcible>4</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
             <name>Usine</name>
-            <description>x3 production de pommes de terre</description>
+            <description>x3 production de tanks</description>
             <logo>icones/factory.jpg</logo>
             <seuil>10000000</seuil>
-            <idcible>1</idcible>
+            <idcible>5</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
             <unlocked>0</unlocked>
         </pallier>
         <pallier>
             <name>Le froid</name>
-            <description>x3 production de pommes de terre</description>
+            <description>x3 la production de tout le monde</description>
             <logo>icones/snowman.jpg</logo>
             <seuil>25000000</seuil>
-            <idcible>2</idcible>
+            <idcible>6</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
             <unlocked>0</unlocked>

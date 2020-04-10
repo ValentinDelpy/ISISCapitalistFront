@@ -7,8 +7,9 @@
     </div>
     <div class="card-inner">
       <div class="header">
-        <div style="height: 35px; width: 100%; color: yellow;" class="txt progress" #bar>
-        </div>
+        
+        <mat-progress-bar class="progressbar" [value]="progressbarvalue"></mat-progress-bar>
+        
         <h2>{{product.name}}</h2>
         <h3> Coût : {{product.cout}}</h3>
       </div>

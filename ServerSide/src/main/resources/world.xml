@@ -79,7 +79,7 @@
             <id>6</id>
             <name>Goulag</name>
             <logo>icones/goulag.jpg</logo>
-            <cout>10000</cout>
+            <cout>5000</cout>
             <croissance>1.07</croissance>
             <revenu>1000</revenu>
             <vitesse>20000</vitesse>
@@ -156,7 +156,7 @@
             <name>Tracteur</name>
             <description>x3 production de pommes de terre</description>
             <logo>icones/tractor.jpg</logo>
-            <seuil>250000</seuil>
+            <seuil>25000</seuil>
             <idcible>1</idcible>
             <ratio>3</ratio>
             <typeratio>GAIN</typeratio>
@@ -166,7 +166,7 @@
             <name>Distilerie</name>
             <description>x3 production de vodka</description>
             <logo>icones/distillery.jpg</logo>
-            <seuil>500000</seuil>
+            <seuil>50000</seuil>
             <idcible>2</idcible>
             <ratio>3</ratio>
             <typeratio>GAIN</typeratio>
@@ -176,7 +176,7 @@
             <name>Usine à chapka</name>
             <description>x3 production de chapkas</description>
             <logo>icones/chapka_usine.jpg</logo>
-            <seuil>1000000</seuil>
+            <seuil>100000</seuil>
             <idcible>3</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
@@ -186,7 +186,7 @@
             <name>Camp</name>
             <description>x3 entraînement de Dimitris</description>
             <logo>icones/camp.jpg</logo>
-            <seuil>5000000</seuil>
+            <seuil>500000</seuil>
             <idcible>4</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
@@ -196,7 +196,7 @@
             <name>Usine</name>
             <description>x3 production de tanks</description>
             <logo>icones/factory.jpg</logo>
-            <seuil>10000000</seuil>
+            <seuil>1000000</seuil>
             <idcible>5</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>
@@ -206,7 +206,7 @@
             <name>Le froid</name>
             <description>x3 la production de tout le monde</description>
             <logo>icones/snowman.jpg</logo>
-            <seuil>25000000</seuil>
+            <seuil>2500000</seuil>
             <idcible>6</idcible>
             <ratio>1.5</ratio>
             <typeratio>VITESSE</typeratio>

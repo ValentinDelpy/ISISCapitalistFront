@@ -35,6 +35,7 @@ export class AppComponent {
       //this.service.saveWorld(this.world);
       this.disponibiliteManager();
       this.disponibiliteUpgrades();
+      this.bonusAllunlock() 
     }, 1000);
   }
 
@@ -125,7 +126,7 @@ export class AppComponent {
     this.nbManagerDebloquables=nb;
   }
 
-  disponibiliteUpgrades() {
+  disponibiliteUpgrades(): void {
     let nb = 0
     this.nbUpgradesDebloquables = 0;
     this.world.upgrades.pallier.forEach(val => {
@@ -152,6 +153,21 @@ export class AppComponent {
           this.world = world;
         });
     
+    }
+
+    bonusAllunlock(){
+      //on recherche la quantité minmal des produits
+      let minQuantite = Math.min(
+        ...this.produits.map(p => p.product.quantite)
+      )
+      this.world.allunlocks.pallier.map(value => {
+        //si la quantité minimal dépasse le seuil, on débloque le produit concerné
+        if(!value.unlocked && minQuantite >= value.seuil){
+          this.world.allunlocks.pallier[this.world.allunlocks.pallier.indexOf(value)].unlocked = true;
+          this.produits.forEach(prod => prod.calcUpgrade(value))
+          this.showSuccess("Bonus de "+value.typeratio+" effectué sur tous les produits");
+        }
+      })
     }
 }
 

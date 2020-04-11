@@ -60,11 +60,11 @@ export class ProductComponent implements OnInit, AfterViewInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    setInterval(() => {
-      this.calcScore();
-    }, 100);
-  }
+    ngOnInit(): void {
+      setInterval(() => {
+        this.calcScore();
+      }, 100);
+    }
 
   ngAfterViewInit() {
     setTimeout(() => {

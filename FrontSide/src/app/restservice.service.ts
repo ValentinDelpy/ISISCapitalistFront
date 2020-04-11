@@ -49,6 +49,12 @@ export class RestserviceService {
     return headers;
   };
 
+  putProduit(product: Product): Promise<Response> {
+    return this.http.put(this.server + "adventureisis/api/product", product, {
+      headers: this.setHeaders(this.getUser())
+    })
+      .toPromise().then(response => response).catch(this.handleError);
+  };
 
   public putManager(manager: Pallier): Promise<Response> {
     // console.log(upgrade);
@@ -60,4 +66,23 @@ export class RestserviceService {
        .then(response => response)
        .catch(this.handleError);
    }
+
+   public saveWorld(world: World): Promise<Response> {
+    console.log(this.getUser());
+    return this.http
+      .put(this.server + "adventureisis/generic/world", world, {
+        headers: { "X-user": this.getUser() }
+      })
+      .toPromise().then(response => response).catch(this.handleError);
+      
+  };
+
+  public deleteWorld(): Promise<Response> {
+    
+    return this.http.delete(this.server + "adventureisis/generic/world", {
+        headers: this.setHeaders(this.getUser())
+      })
+      .toPromise().then(response => response)
+      .catch(this.handleError);
+  }
 }

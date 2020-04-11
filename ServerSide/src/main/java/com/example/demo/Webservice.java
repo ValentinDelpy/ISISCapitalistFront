@@ -57,29 +57,25 @@ public class Webservice {
 
     @PUT
     @Path("product")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public void editProduct(@FormParam("data")String data, @FormParam("username")String username) throws FileNotFoundException, JAXBException {
-        ProductType product = new Gson().fromJson(data, ProductType.class);
+    public void putProduct(@Context HttpServletRequest request, ProductType product) throws JAXBException, IOException {
+        String username = request.getHeader("X-user");
         services.updateProduct(username, product);
     }
 
-     @PUT
+    @PUT
     @Path("manager")
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response editManager(String data) throws JAXBException, FileNotFoundException{
-        System.out.println("------------------------------------ data +"+data);
-        PallierType manager = new Gson().fromJson(data, PallierType.class);
-        return Response.ok(services.updateManager(data, manager)).build();
+    public void putManager(@Context HttpServletRequest request, PallierType manager) throws JAXBException, IOException {
+        String username = request.getHeader("X-user");
+        services.updateManager(username, manager);
     }
     
-    
-    @PUT
+   @PUT
     @Path("upgrade")
-    @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public void editUpgrade(@FormParam("data")String data, @FormParam("username")String username) throws JAXBException, FileNotFoundException{
-        PallierType upgrade = new Gson().fromJson(data, PallierType.class);
+    public void putUpgrade(@Context HttpServletRequest request, PallierType upgrade) throws JAXBException, IOException {
+        String username = request.getHeader("X-user");
         services.updateUpgrade(username, upgrade);
     }
+    
     @PUT
     @Path("angelupgrade")
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})

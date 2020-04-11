@@ -18,6 +18,7 @@ export class AppComponent {
   username: string = '';
   qtmulti = 1;
   nbManagerDebloquables = 0;
+  nbUpgradesDebloquables = 0;
 
   constructor(private service: RestserviceService, private toastr: ToastrService) {
     this.newUserName();
@@ -27,6 +28,14 @@ export class AppComponent {
       world => {
         this.world = world;
       });
+  }
+
+  ngOnInit(): void {
+    setInterval(() => {
+      //this.service.saveWorld(this.world);
+      this.disponibiliteManager();
+      this.disponibiliteUpgrades();
+    }, 1000);
   }
 
   showSuccess(message:string) {
@@ -39,8 +48,9 @@ export class AppComponent {
     });
   }
 
-  onBuyDone(m: number) {
+  onBuyDone(m:number) {
     this.world.money = this.world.money - m;
+    //this.service.putProduit(m.product);
   }
 
   onProductionDone(p: Product) {  
@@ -115,6 +125,17 @@ export class AppComponent {
     this.nbManagerDebloquables=nb;
   }
 
+  disponibiliteUpgrades() {
+    let nb = 0
+    this.nbUpgradesDebloquables = 0;
+    this.world.upgrades.pallier.forEach(val => {
+      if (this.world.money > val.seuil && !val.unlocked) {
+        nb++;
+      }
+  })
+  this.nbUpgradesDebloquables=nb;
+  }
+
   newUserName():void{
     this.username = localStorage.getItem("username");
     this.username = 'Comrade' + Math.floor(Math.random() * 10000);
@@ -125,6 +146,12 @@ export class AppComponent {
     onUsernameChanged(): void {
       localStorage.setItem("username", this.username);
       this.service.setUser(this.username);
+      this.service.getWorld().then(
+
+        world => {
+          this.world = world;
+        });
+    
     }
 }
 

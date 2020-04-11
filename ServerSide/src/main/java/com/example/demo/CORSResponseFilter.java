@@ -13,7 +13,7 @@ import javax.ws.rs.core.MultivaluedMap;
 
 /**
  *
- * @author marga
+ * @author Soul
  */
 public class CORSResponseFilter implements ContainerResponseFilter {
 

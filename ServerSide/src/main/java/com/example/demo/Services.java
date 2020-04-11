@@ -34,6 +34,7 @@ public class Services {
         InputStream input;
         try {
             try {
+                System.out.println("chargement du monde associé au joueur"+pseudo);
                 File f = new File(pseudo + "world.xml");
                 input = new FileInputStream(f);
             } catch (Exception e) {
@@ -60,6 +61,7 @@ public class Services {
 
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public World getWorld(String pseudo) throws JAXBException, FileNotFoundException {
+        System.out.println("saveWorld");
         World w = this.readWorldFromXml(pseudo);
         for (ProductType pt : w.getProducts().getProduct()) {
             if (!pt.isManagerUnlocked()) {
@@ -116,6 +118,7 @@ public class Services {
             }
         }
         // sauvegarder les changements du monde
+        System.out.println("update");
         this.saveWorldToXml(world, username);
         return true;
     }
@@ -175,7 +178,7 @@ public class Services {
     // prend en paramètre le pseudo du joueur et le manager acheté.
 // renvoie false si l’action n’a pas pu être traitée
     public Boolean updateManager(String username, PallierType newmanager) throws FileNotFoundException, JAXBException {
-        System.out.println(username);
+        System.out.println("update manager");
         // aller chercher le monde qui correspond au joueur
         World world = getWorld(username);
         // trouver dans ce monde, le manager équivalent à celui passé
